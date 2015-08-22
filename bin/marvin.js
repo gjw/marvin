@@ -21,7 +21,7 @@ var queues   = createQueues(features, config.threads || 1);
 var failed   = false;
 
 queues.forEach(function(queue, index) {
-  var thread = childProcess.fork('./node_modules/marvin/lib/env/mocha', process.argv);
+  var thread = childProcess.fork('./node_modules/marvin-js/lib/env/mocha', process.argv);
   thread.send({ mocha: true, thread: index + 1, queue: queue });
   thread.on("exit", function(code) {
     if (code > 0) failed = true;
