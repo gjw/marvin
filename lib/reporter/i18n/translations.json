@@ -1,0 +1,63 @@
+{
+
+  "english": {
+    "title": "Test Report",
+    "duration": "Duration",
+    "threads": "Threads",
+    "feature": "Feature",
+    "scenario": "Scenario",
+    "passed": "Passed",
+    "success": "Success",
+    "failed": "Failed",
+    "pending": "Pending",
+    "skipped": "Skipped",
+    "error": "Error",
+    "screenshot": "Screenshot"
+  },
+
+  "french": {
+    "title": "Rapport de test",
+    "duration": "Durée",
+    "threads": "Processus",
+    "feature": "Fonctionnalité",
+    "scenario": "Scénario",
+    "passed": "Exécutés",
+    "success": "Succès",
+    "failed": "En échec",
+    "pending": "En attente",
+    "skipped": "Ignorés",
+    "error": "Erreur",
+    "screenshot": "Capture d'écran"
+  },
+
+  "german": {
+    "title": "Prüfbericht",
+    "duration": "Dauer",
+    "threads": "Prozesse",
+    "feature": "Funktionalität",
+    "scenario": "Szenario",
+    "passed": "Bestanden",
+    "success": "Erfolg",
+    "failed": "Fehlgeschlagen",
+    "pending": "Schwebend",
+    "skipped": "Sprungen",
+    "error": "Error",
+    "screenshot": "Screenshot"
+  },
+
+  "russian": {
+    "title": "Отчёт о тестировании",
+    "duration": "Время",
+    "threads": "Потоки",
+    "feature": "Функционал",
+    "scenario": "Сценарий",
+    "passed": "Пройдено",
+    "success": "Успешно",
+    "failed": "Провал",
+    "pending": "В ожидании",
+    "skipped": "Пропущен",
+    "error": "Ошибка",
+    "screenshot": "Скриншот"
+  }
+
+}

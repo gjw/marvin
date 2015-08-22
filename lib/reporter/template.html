@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test report</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/ico" href="assets/images/favicon.ico" />
+    <link rel="shortcut icon" type="image/ico" href="assets/images/favicon.ico" />
+    <link rel="stylesheet" href="assets/main.min.css">
+</head>
+<body>
+  <div class="main">
+  
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="assets/images/logo.png" width="200" height="35" alt="Moonraker logo">
+            </a>
+            {{#with stats}}
+            <ul class="stats">
+                <li><span>{{i18n 'passed'}}:</span> <strong>{{passes}}</strong></li>
+                <li><span>{{i18n 'failed'}}:</span> <strong>{{failures}}</strong></li>
+                <li><span>{{i18n 'skipped'}}:</span> <strong>{{skipped}}</strong></li>
+                <li>{{i18n 'duration'}}: <strong>{{duration}}s</strong></li>
+                <li>{{i18n 'threads'}}: <strong>{{threads}}</strong></li>
+            </ul>
+            {{/with}}
+        </div>
+    </nav>
+
+    <section class="reporter container">
+        <h1>{{i18n 'title'}}</h1>
+
+        {{#features}}
+        <section class="feature">
+            <h2><span>{{i18n 'feature'}}:</span> {{title}}</h2>
+            <ul class="info">
+            {{#each description}}
+                <li>{{ this }}</li>
+            {{/each}}
+            </ul>
+
+            {{#scenarios}}
+            <div class="scenario">
+                <table class="table table-bordered">
+                    <thead class="scenario-header dd">
+                        <tr>
+                            <th>
+                                <div class="scenario-text">{{i18n 'scenario'}}: {{title}}</div>
+                                {{#ifEqual status 'pass'}}
+                                <span class="label label-success">{{i18n 'success'}}</span>
+                                {{/ifEqual}}
+                                {{#ifEqual status 'pending'}}
+                                <span class="label label-primary">{{i18n 'pending'}}</span>
+                                {{/ifEqual}}
+                                {{#ifEqual status 'fail'}}
+                                <span class="label label-danger">{{i18n 'failed'}}</span>
+                                {{/ifEqual}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="scenario-content dd-content">
+                    {{#steps}}
+                        {{#ifEqual status 'pass'}}
+                        <tr>
+                            <td>
+                                <div class="scenario-text">{{title}}</div>
+                                <span class="label label-success">{{i18n 'success'}}</span>
+                            </td>
+                        </tr>
+                        {{/ifEqual}}
+                        {{#ifEqual status 'pending'}}
+                        <tr>
+                            <td>
+                                <div class="scenario-text">{{title}}</div>
+                                <span class="label label-primary">{{i18n 'pending'}}</span>
+                            </td>
+                        </tr>
+                        {{/ifEqual}}
+                        {{#ifEqual status 'fail'}}
+                        <tr>
+                            <td>
+                                <div class="scenario-text">{{title}}</div>
+                                <span class="label label-danger">{{i18n 'failed'}}</span>
+                                <div class="error-info">
+                                    <h3>{{i18n 'error'}}:</h3>
+                                    <code class="error">{{error}}</code>
+                                    <h3>{{i18n 'screenshot'}}:</h3>
+                                    <img src="screenshots/{{screenshot}}">
+                                </div>
+                            </td>
+                        </tr>
+                        {{/ifEqual}}
+                        {{#ifEqual status 'skipped'}}
+                        <tr>
+                            <td>
+                                <div class="scenario-text">{{title}}</div>
+                                <span class="label label-warning">{{i18n 'skipped'}}</span>
+                            </td>
+                        </tr>
+                        {{/ifEqual}}
+                    {{/steps}}
+                    </tbody>
+                </table>
+            </div>
+            {{/scenarios}}
+        </section>
+        {{/features}}
+
+    </section>
+    </div>
+    <script src="assets/jquery.min.js"></script>
+    <script>
+    $(function() {
+        $(".dd").click(function() {
+            var display = 'none' == $(this).next(".dd-content").css('display') ? 'table-row-group': 'none';
+            $(this).next(".scenario-content").css('display', display);
+        });
+    });
+    </script>
+</body>
+</html>
