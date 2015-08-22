@@ -1,0 +1,19 @@
+{
+  "name": "marvin",
+  "version": "0.0.1",
+  "homepage": "https://github.com/brunoscopelliti/marvin",
+  "description": "Test framework (idea from moonraker)",
+  "keywords": [],
+  "main": "lib/marvin.js",
+  "dependencies": {
+    "chalk": "1.1.1",
+    "yadda": "0.15.2",
+    "selenium-webdriver": "2.46.1",
+    "mocha": "2.2.5",
+    "chai": "3.2.0",
+    "glob": "4.3.1",
+    "handlebars": "2.0.0",
+    "wrench": "1.5.8",
+    "jquery": "~1.9.0"
+  }
+}
