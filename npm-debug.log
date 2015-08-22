@@ -1,0 +1,95 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@2.10.1
+3 info using node@v0.12.4
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec { raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/brunoscopelliti/Desktop/github/marvin',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/brunoscopelliti/.npm/marvin-js/0.0.1/package.tgz not in flight; packing
+9 verbose tar pack [ '/Users/brunoscopelliti/.npm/marvin-js/0.0.1/package.tgz',
+9 verbose tar pack   '/Users/brunoscopelliti/Desktop/github/marvin' ]
+10 verbose tarball /Users/brunoscopelliti/.npm/marvin-js/0.0.1/package.tgz
+11 verbose folder /Users/brunoscopelliti/Desktop/github/marvin
+12 info prepublish marvin-js@0.0.1
+13 verbose addLocalTarball adding from inside cache /Users/brunoscopelliti/.npm/marvin-js/0.0.1/package.tgz
+14 silly cache afterAdd marvin-js@0.0.1
+15 verbose afterAdd /Users/brunoscopelliti/.npm/marvin-js/0.0.1/package/package.json not in flight; writing
+16 verbose afterAdd /Users/brunoscopelliti/.npm/marvin-js/0.0.1/package/package.json written
+17 silly publish { name: 'marvin-js',
+17 silly publish   version: '0.0.1',
+17 silly publish   homepage: 'https://github.com/brunoscopelliti/marvin',
+17 silly publish   description: 'Test framework (idea from moonraker)',
+17 silly publish   keywords: [],
+17 silly publish   main: 'lib/marvin.js',
+17 silly publish   dependencies:
+17 silly publish    { chalk: '1.1.1',
+17 silly publish      yadda: '0.15.2',
+17 silly publish      'selenium-webdriver': '2.46.1',
+17 silly publish      mocha: '2.2.5',
+17 silly publish      chai: '3.2.0',
+17 silly publish      glob: '4.3.1',
+17 silly publish      handlebars: '2.0.0',
+17 silly publish      wrench: '1.5.8',
+17 silly publish      jquery: '~1.9.0' },
+17 silly publish   readme: '# marvin\nA web testing framework for Node (idea from moonraker)\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   gitHead: '4588c6367a7c673867d5ad00f5ab96f7f5aa3238',
+17 silly publish   _id: 'marvin-js@0.0.1',
+17 silly publish   scripts: {},
+17 silly publish   _shasum: '2262046be1fc290979a85bbcbdf07e11233edea0',
+17 silly publish   _from: '.' }
+18 verbose getPublishConfig undefined
+19 silly mapToRegistry name marvin-js
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/marvin-js
+23 verbose publish registryBase https://registry.npmjs.org/
+24 silly publish uploading /Users/brunoscopelliti/.npm/marvin-js/0.0.1/package.tgz
+25 verbose request uri https://registry.npmjs.org/marvin-js
+26 verbose request sending authorization for write operation
+27 info attempt registry request try #1 at 9:31:02 AM
+28 verbose request id 55b28087ddba026a
+29 http request PUT https://registry.npmjs.org/marvin-js
+30 http 403 https://registry.npmjs.org/marvin-js
+31 verbose headers { 'content-type': 'application/json',
+31 verbose headers   'cache-control': 'max-age=60',
+31 verbose headers   'content-length': '95',
+31 verbose headers   'accept-ranges': 'bytes',
+31 verbose headers   date: 'Sat, 22 Aug 2015 07:31:17 GMT',
+31 verbose headers   via: '1.1 varnish',
+31 verbose headers   connection: 'keep-alive',
+31 verbose headers   'x-served-by': 'cache-fra1226-FRA',
+31 verbose headers   'x-cache': 'MISS',
+31 verbose headers   'x-cache-hits': '0',
+31 verbose headers   'x-timer': 'S1440228663.043861,VS0,VE14033' }
+32 verbose request invalidating /Users/brunoscopelliti/.npm/registry.npmjs.org/marvin-js on PUT
+33 error publish Failed PUT 403
+34 verbose stack Error: "You cannot publish over the previously published version 0.0.1." : marvin-js
+34 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:247:14)
+34 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+34 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:368:22)
+34 verbose stack     at Request.emit (events.js:110:17)
+34 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1219:14)
+34 verbose stack     at Request.emit (events.js:129:20)
+34 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1167:12)
+34 verbose stack     at IncomingMessage.emit (events.js:129:20)
+34 verbose stack     at _stream_readable.js:908:16
+34 verbose stack     at process._tickCallback (node.js:355:11)
+35 verbose statusCode 403
+36 verbose pkgid marvin-js
+37 verbose cwd /Users/brunoscopelliti/Desktop/github/marvin
+38 error Darwin 14.3.0
+39 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+40 error node v0.12.4
+41 error npm  v2.10.1
+42 error code E403
+43 error "You cannot publish over the previously published version 0.0.1." : marvin-js
+44 error If you need help, you may report this error at:
+44 error     <https://github.com/npm/npm/issues>
+45 verbose exit [ 1, true ]

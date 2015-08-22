@@ -1,6 +1,6 @@
 {
-  "name": "marvin",
-  "version": "0.0.1",
+  "name": "marvin-js",
+  "version": "0.0.2",
   "homepage": "https://github.com/brunoscopelliti/marvin",
   "description": "Test framework (idea from moonraker)",
   "keywords": [],

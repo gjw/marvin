@@ -1,4 +1,4 @@
-var config       = require('marvin').config;
+var config       = require('marvin-js').config;
 
 
 // @todo remove wrench as dependency
