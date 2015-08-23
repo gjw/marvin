@@ -63,14 +63,23 @@
                     </thead>
                     <tbody class="scenario-content dd-content">
                     {{#steps}}
+                        
                         {{#ifEqual status 'pass'}}
                         <tr>
                             <td>
                                 <div class="scenario-text">{{title}}</div>
                                 <span class="label label-success">{{i18n 'success'}}</span>
+                                <div class="log">
+                                    
+                                    {{#logs}}
+                                        {{text}}
+                                    {{/logs}}
+
+                                </div>
                             </td>
                         </tr>
                         {{/ifEqual}}
+                        
                         {{#ifEqual status 'pending'}}
                         <tr>
                             <td>
@@ -79,6 +88,7 @@
                             </td>
                         </tr>
                         {{/ifEqual}}
+                        
                         {{#ifEqual status 'fail'}}
                         <tr>
                             <td>
@@ -93,6 +103,7 @@
                             </td>
                         </tr>
                         {{/ifEqual}}
+                        
                         {{#ifEqual status 'skipped'}}
                         <tr>
                             <td>
@@ -101,6 +112,7 @@
                             </td>
                         </tr>
                         {{/ifEqual}}
+
                     {{/steps}}
                     </tbody>
                 </table>
