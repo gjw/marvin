@@ -1,45 +1,87 @@
-var config       = require('marvin-js').config;
+var config = require('marvin-js').config;
+var session = require('marvin-js').session;
+
+(function checkConfiguration() {
+
+  var MANDATORY_CONFIGURATION_FIELDS = ['browser', 'baseUrl', 'featuresDir', 'stepsDir'];
+
+  function ConfigError(opt) {
+    this.name = 'ConfigError';
+    this.message = "'" + opt + "' missing from Marvin config.";
+  }
+
+  ConfigError.prototype = new Error();
+
+  MANDATORY_CONFIGURATION_FIELDS.forEach(function(opt) {
+    if (!config[opt]){
+      throw new ConfigError(opt);
+    }
+  });
+
+}());
 
 
-// @todo remove wrench as dependency
-
-
-
-
+var fs = require('fs');
+var path = require('path');
 var childProcess = require('child_process');
-var fs           = require('fs');
-var path         = require('path');
-var wrench       = require('wrench');
-var builder      = require('../lib/reporter/builder');
-var parser       = require('../lib/utils/feature-parser');
 
-checkConfig();
-resetWorkSpace();
+
+
+
+var wrench = require('wrench');
+
+
+
+
+
+(function prepareResultDirectory() {
+
+  var baseResultsDir = config.resultsDir || 'results';
+
+  if (config.clean && fs.existsSync(baseResultsDir)) {
+    wrench.rmdirSyncRecursive(baseResultsDir);
+  }
+
+  var launchDate = (new Date()).toUTCString();
+  launchDate = launchDate.slice(5, -4).toLowerCase().replace(/[:\s]/g, "-");
+
+  session.resultsDir = path.join(baseResultsDir, launchDate);
+  
+  wrench.mkdirSyncRecursive(path.join(baseResultsDir, 'screenshots'));
+  wrench.mkdirSyncRecursive(path.join(session.resultsDir, 'screenshots'));
+
+}());
+
+
+var builder = require('../lib/reporter/builder');
+var parser = require('../lib/utils/feature-parser');
+
+
 
 var features = parser.parseFeatures(config.featuresDir, config.tags, config.language);
-var queues   = createQueues(features, config.threads || 1);
-var failed   = false;
+session.queues = createQueues(features, config.threads || 1);
+var failed = false;
 
-queues.forEach(function(queue, index) {
-  var thread = childProcess.fork('./node_modules/marvin-js/lib/env/mocha', process.argv);
-  thread.send({ mocha: true, thread: index + 1, queue: queue });
+session.queues.forEach(function(queue, index) {
+  var mochaDir = path.join('node_modules', 'marvin-js', 'lib', 'test-runner', 'mocha');
+  var thread = childProcess.fork(mochaDir, process.argv);
+
+  thread.send({ mocha: true, thread: index + 1, queue: queue, resultsDir: session.resultsDir });
   thread.on("exit", function(code) {
-    if (code > 0) failed = true;
+    if (code > 0) {
+      failed = true;
+    }
   });
 });
 
 process.on('exit', function() {
-  if (config.reporter === 'marvin') builder.createHtmlReport();
+  if (config.reporter === 'marvin') {
+    builder.createHtmlReport(session.resultsDir);
+  }
   if (failed) process.exit(2);
 });
 
-function resetWorkSpace() {
-  var resultsDir = config.resultsDir || 'results';
-  if (fs.existsSync(resultsDir)) {
-    wrench.rmdirSyncRecursive(resultsDir);
-  }
-  wrench.mkdirSyncRecursive(path.join(resultsDir, 'screenshots'));
-}
+
 
 function createQueues(features, threads) {
   var len = features.length, queues = [], i = 0;
@@ -51,15 +93,4 @@ function createQueues(features, threads) {
   return queues;
 }
 
-function checkConfig() {
-  ['browser', 'baseUrl', 'featuresDir', 'stepsDir'].forEach(function (opt) {
-    if (!config[opt]) throw new ConfigError(opt);
-  });
-}
 
-function ConfigError(opt) {
-  this.name = 'ConfigError';
-  this.message = "'" + opt + "' missing from Moonraker config.";
-}
-
-ConfigError.prototype = new Error();
