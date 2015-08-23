@@ -76,7 +76,7 @@ session.queues.forEach(function(queue, index) {
 
 process.on('exit', function() {
   if (config.reporter === 'marvin') {
-    builder.createHtmlReport(session.resultsDir);
+    builder.prepareResults(session.resultsDir);
   }
   if (failed) process.exit(2);
 });
