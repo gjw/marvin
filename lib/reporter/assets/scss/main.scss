@@ -1,8 +1,8 @@
-$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+$icon-font-path: "lib/reporter/assets/scss/bootstrap/fonts/";
 $font-size-base: 16px !default;
 
-@import "bower_components/sass-bootstrap/lib/bootstrap";
-@import "lib/reporter/assets/scss/_typography";
+@import "./lib/reporter/assets/scss/bootstrap/css/_bootstrap";
+@import "./lib/reporter/assets/scss/_typography";
 
 $primary: #1abc9c;
 $secondary: #3498DB;
