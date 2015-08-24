@@ -67,14 +67,18 @@
                         {{#ifEqual status 'pass'}}
                         <tr>
                             <td>
-                                <div class="scenario-text">{{title}}</div>
-                                <span class="label label-success">{{i18n 'success'}}</span>
-                                <div class="log">
+                                <div class="single-step-result">
+                                    <div class="scenario-text">{{title}}</div>
+                                    <span class="label label-success">{{i18n 'success'}}</span>
+                                </div>
+                                <div class="step-logs">
+                                {{#logs}}
                                     
-                                    {{#logs}}
-                                        {{text}}
-                                    {{/logs}}
+                                    {{#ifEqual type 'text'}}
+                                        {{ text }}
+                                    {{/ifEqual}}
 
+                                {{/logs}}
                                 </div>
                             </td>
                         </tr>
