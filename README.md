@@ -15,9 +15,12 @@ X ultra simple log inside the report
   
   + [TODO] improve 
 
+X rename /utils/*.js
+
+
 * validate webdriver/webdriver.js
 
-* rename /utils/*.js
+* feature-parser.js should not be in /utils
 
 * include screenshot into the report
 
