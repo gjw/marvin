@@ -18,8 +18,6 @@ X ultra simple log inside the report
 X rename /utils/*.js
 
 
-* validate webdriver/webdriver.js
-
 * feature-parser.js should not be in /utils
 
 * include screenshot into the report
