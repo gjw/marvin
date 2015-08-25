@@ -48,7 +48,6 @@
                     <thead class="scenario-header dd">
                         <tr>
                             <th>
-                                <div class="scenario-text">{{i18n 'scenario'}}: {{title}}</div>
                                 {{#ifEqual status 'pass'}}
                                 <span class="label label-success">{{i18n 'success'}}</span>
                                 {{/ifEqual}}
@@ -58,6 +57,7 @@
                                 {{#ifEqual status 'fail'}}
                                 <span class="label label-danger">{{i18n 'failed'}}</span>
                                 {{/ifEqual}}
+                                <span class="scenario-text">{{i18n 'scenario'}}: {{title}}</span>
                             </th>
                         </tr>
                     </thead>
@@ -71,15 +71,26 @@
                                     <div class="scenario-text">{{title}}</div>
                                     <span class="label label-success">{{i18n 'success'}}</span>
                                 </div>
-                                <div class="step-logs">
-                                {{#logs}}
-                                    
-                                    {{#ifEqual type 'text'}}
-                                        {{ text }}
-                                    {{/ifEqual}}
 
-                                {{/logs}}
-                                </div>
+                                {{#if logs}}
+                                    <div class="step-logs">
+                                        <div>Output log:</div>
+                                        {{#logs}}
+
+                                            {{#ifEqual type 'text'}}
+                                                <div class="log log-text log-level-{{ level }}">{{ text }}</div>
+                                            {{/ifEqual}}
+
+                                            {{#ifEqual type 'assertion'}}
+                                                <div class="log log-assert log-assert-{{ status }}">{{ text }}</div>
+                                            {{/ifEqual}}
+
+                                            {{/ifEqual}}
+
+                                        {{/logs}}
+                                    </div>
+                                {{/if}}
+
                             </td>
                         </tr>
                         {{/ifEqual}}
