@@ -20,8 +20,6 @@ Since I've cloned LateRoom's Moonraker
 
   + [X] it is possible to enable the cleaning of the result folder via configuration, with `"clean": true`
 
-* [X] automatic screenshot each step, with `"capture": true`
-
 * [X] simplified report's dependencies management
 
 * [X] POC logging from test's step in the report
