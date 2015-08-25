@@ -32,23 +32,19 @@ var wrench = require('wrench');
 
 
 
-
+var baseResultsDir = config.resultsDir || 'results';
 
 (function prepareResultDirectory() {
-
-  var baseResultsDir = config.resultsDir || 'results';
 
   if (config.clean && fs.existsSync(baseResultsDir)) {
     wrench.rmdirSyncRecursive(baseResultsDir);
   }
 
-  var launchDate = (new Date()).toUTCString();
-  launchDate = launchDate.slice(5, -4).toLowerCase().replace(/[:\s]/g, "-");
-
-  session.resultsDir = path.join(baseResultsDir, launchDate);
+  var now = new Date();
+  session.launchDate = now.toUTCString().slice(5, -4).toLowerCase().replace(/[:\s]/g, "-");
   
   wrench.mkdirSyncRecursive(path.join(baseResultsDir, 'screenshots'));
-  wrench.mkdirSyncRecursive(path.join(session.resultsDir, 'screenshots'));
+  wrench.mkdirSyncRecursive(path.join(baseResultsDir, session.launchDate, 'screenshots'));
 
 }());
 
@@ -66,7 +62,7 @@ session.queues.forEach(function(queue, index) {
   var mochaDir = path.join('node_modules', 'marvin-js', 'lib', 'test-runner', 'mocha');
   var thread = childProcess.fork(mochaDir, process.argv);
 
-  thread.send({ mocha: true, thread: index + 1, queue: queue, resultsDir: session.resultsDir });
+  thread.send({ mocha: true, thread: index + 1, queue: queue, launchDate: session.launchDate });
   thread.on("exit", function(code) {
     if (code > 0) {
       failed = true;
@@ -76,7 +72,7 @@ session.queues.forEach(function(queue, index) {
 
 process.on('exit', function() {
   if (config.reporter === 'marvin') {
-    builder.prepareResults(session.resultsDir);
+    builder.prepareResults(path.join(baseResultsDir, session.launchDate));
   }
   if (failed) process.exit(2);
 });
