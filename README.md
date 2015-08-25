@@ -6,7 +6,7 @@ An easy to use lightweight web testing framework for Node, designed for speed, m
 
 Integrating [Yadda 0.15.2](https://github.com/acuminous/yadda), [Selenium-Webdriver 2.46.1](https://code.google.com/p/selenium/wiki/WebDriverJs), [Mocha 2.2.5](http://mochajs.org/) & [Chai 3.2.0](http://chaijs.com/).
 
-## planned development
+## Planned development
 
 Since I've cloned LateRoom's Moonraker
 
@@ -44,7 +44,7 @@ Since I've cloned LateRoom's Moonraker
 
 * [ ] integrating selenium-webdriver [until's module](https://github.com/SeleniumHQ/selenium/blob/master/javascript/node/selenium-webdriver/CHANGES.md#v2440)
 
-## index
+## Index
 
 * [Install](#install)
 * [Example Project](#example-project)
