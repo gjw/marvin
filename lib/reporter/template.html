@@ -89,9 +89,24 @@
                                                 <div class="log log-table">
                                                     {{#if text}}<div class="log log-table">{{ text }}</div>{{/if}}
                                                     <table>
-                                                        {{#data}}
-                                                            <!-- @todo -->
-                                                        {{/data}}
+                                                        {{#with data}}
+                                                            <thead>
+                                                                <tr>
+                                                                    {{#keys}}
+                                                                        <th>{{ this }}</th>
+                                                                    {{/keys}}
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {{#entries}}
+                                                                    <tr>
+                                                                        {{#this}}
+                                                                            <td>{{ this }}</td>
+                                                                        {{/this}}
+                                                                    </tr>
+                                                                {{/entries}}
+                                                            </tbody>
+                                                        {{/with}}
                                                     </table>
                                                 </div>
                                             {{/ifEqual}}
