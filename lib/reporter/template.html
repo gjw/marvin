@@ -85,6 +85,12 @@
                                                 <div class="log log-assert log-assert-{{ status }}">{{ text }}</div>
                                             {{/ifEqual}}
 
+                                            {{#ifEqual type 'value'}}
+                                                <div class="log log-value">
+                                                    <dl><dt>{{ key }}:</dt><dd>{{ value }}</dd></dl>
+                                                </div>
+                                            {{/ifEqual}}
+
                                             {{#ifEqual type 'table'}}
                                                 <div class="log log-table">
                                                     {{#if text}}<div class="log log-table">{{ text }}</div>{{/if}}
