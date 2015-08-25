@@ -12,7 +12,7 @@ Integrating [Yadda 0.15.2](https://github.com/acuminous/yadda), [Selenium-Webdri
 
 Since I've cloned LateRoom's Moonraker
 
-* [X] update dependencies selenium-webdriver, yadda, mocha. removed coffeescript (not a big fan, sorry)
+* [X] **update all dependencies**; removed coffeescript (not a big fan, sorry)
 
 * [X] refactoring directory tree
 
@@ -33,8 +33,6 @@ Since I've cloned LateRoom's Moonraker
   + [] it worked! currently working on improvement
 
 * [ ] refactoring feature-parser.js: it should not be in /utils
-
-* [ ] update all dependencies
 
 * [ ] make possible to include screenshot into the report
 

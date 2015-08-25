@@ -1,6 +1,6 @@
 {
   "name": "marvin-js",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "homepage": "https://github.com/brunoscopelliti/marvin",
   "description": "A web testing framework for Node (initial idea from LateRooms' Moonraker)",
   "keywords": [],
@@ -12,7 +12,7 @@
     "mocha": "2.2.5",
     "chai": "3.2.0",
     "nconf": "0.7.2",
-    "glob": "4.3.1",
+    "glob": "5.0.14",
     "handlebars": "3.0.3",
     "wrench": "1.5.8"
   },
