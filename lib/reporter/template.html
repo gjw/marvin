@@ -85,6 +85,15 @@
                                                 <div class="log log-assert log-assert-{{ status }}">{{ text }}</div>
                                             {{/ifEqual}}
 
+                                            {{#ifEqual type 'table'}}
+                                                <div class="log log-table">
+                                                    {{#if text}}<div class="log log-table">{{ text }}</div>{{/if}}
+                                                    <table>
+                                                        {{#data}}
+                                                            <!-- @todo -->
+                                                        {{/data}}
+                                                    </table>
+                                                </div>
                                             {{/ifEqual}}
 
                                         {{/logs}}
