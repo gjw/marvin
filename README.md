@@ -1,5 +1,7 @@
 # marvin-js
 
+[![NPM](https://nodei.co/npm/marvin-js.png?downloads=true&downloadRank=true)](https://nodei.co/npm/marvin-js/)
+
 **marvin-js was born as a local clone of [LateRooms' Moonraker](https://github.com/LateRoomsGroup/moonraker)**
 
 An easy to use lightweight web testing framework for Node, designed for speed, maintainability and collaboration. Bringing together everything you need out of the box - familiar BDD features/scenarios, a simple page object library, parallel testing and pretty rich reports.
