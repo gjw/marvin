@@ -12,25 +12,21 @@ Integrating [Yadda 0.15.2](https://github.com/acuminous/yadda), [Selenium-Webdri
 
 Since I've cloned LateRoom's Moonraker
 
-* [X] **update all dependencies**; removed coffeescript (not a big fan, sorry)
+* [X] **updated all dependencies**; simplified report's dependencies management; removed coffeescript (not a big fan, sorry)
 
 * [X] refactoring directory tree
 
 * [X] support Yadda's custom dictionary
 
-* [X] store report in different folder, so that a new test does not clear result's history
-
-  + [X] it is possible to enable the cleaning of the result folder via configuration, with `"clean": true`
-
-* [X] simplified report's dependencies management
+* [X] store report in different folder, so that a new test does not clear result's history; it is possible to enable the cleaning of the result folder via configuration, with `"clean": true`
 
 * [X] POC logging from test's step in the report
 
-  + [] it worked! currently working on improvement
+  + [ ] it worked! currently working on improvement
 
 * [X] POC not-blocking assertions
 
-  + [] it worked! currently working on improvement
+  + [ ] it worked! currently working on improvement
 
 * [ ] refactoring feature-parser.js: it should not be in /utils
 
