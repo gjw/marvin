@@ -90,9 +90,9 @@
                                             {{/ifEqual}}
 
                                             {{#ifEqual type 'table'}}
-                                                <div class="log log-table">
-                                                    {{#if text}}<div class="log log-table">{{ text }}</div>{{/if}}
-                                                    <table>
+                                                <div class="log log-dir">
+                                                    {{#if text}}<div class="log log-table-title">{{ text }}</div>{{/if}}
+                                                    <table class="table-striped log-table">
                                                         {{#with data}}
                                                             <thead>
                                                                 <tr>
@@ -158,9 +158,9 @@
                                             {{/ifEqual}}
                                         
                                             {{#ifEqual type 'table'}}
-                                                <div class="log log-table">
-                                                    {{#if text}}<div class="log log-table">{{ text }}</div>{{/if}}
-                                                    <table>
+                                                <div class="log log-dir">
+                                                    {{#if text}}<div class="log log-table-title">{{ text }}</div>{{/if}}
+                                                    <table class="table-striped log-table">
                                                         {{#with data}}
                                                             <thead>
                                                                 <tr>

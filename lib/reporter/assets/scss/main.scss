@@ -104,14 +104,15 @@ li {
 .error-info {
     margin-top: 35px;
     code {
-        word-break: break-word;
-        display: block;
         clear: both;
-        white-space: inherit;
+        display: block;
+        overflow: auto;
         padding: 15px;
-        overflow-y: scroll;
+        white-space: inherit;
+        word-break: break-word;
     }
     img {
+        border: 1px solid #333;
         width: 100%;
     }
 }
@@ -198,17 +199,6 @@ li {
         margin: 0 auto;
     }
 
-    .step-logs-title {
-
-    }
-
-    .step-logs {
-        background: $background;
-        border: 1px solid #DDD;
-        margin: 15px 0 0;
-        padding: 5px;
-    }
-
     .reporter {
         margin-top: 70px;
     }
@@ -221,3 +211,33 @@ li {
     }
 
 }
+
+
+
+
+
+
+.step-logs {
+    background: $background;
+    border: 1px solid #DDD;
+    margin: 15px 0 0;
+    padding: 5px;
+    .log + .log {
+        margin: 10px 0;
+    }
+}
+
+.log-table-title {
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+table.log-table {
+  td, th {
+    border: 1px solid #BBB;
+    padding: 5px 10px;
+    text-align: center;
+  }
+  th { border-color: #999; }
+}
+
