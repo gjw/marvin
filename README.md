@@ -28,13 +28,15 @@ Since I've cloned LateRoom's Moonraker
 
   + [ ] it worked! currently working on improvement
 
+* [V] exploring the possibility of support for simultaneous test run on different browsers
+
+  + [ ] it worked! currently working on reporting for multiple browsers
+
 * [ ] refactoring feature-parser.js: it should not be in /utils
 
 * [ ] make possible to include screenshot into the report
 
 * [ ] improve demo repository with more scenarios [marvin-demo](https://github.com/brunoscopelliti/marvin-demo) 
-
-* [ ] exploring the possibility of support for simultaneously test run on different browsers
 
 * [ ] integrating selenium-webdriver [until's module](https://github.com/SeleniumHQ/selenium/blob/master/javascript/node/selenium-webdriver/CHANGES.md#v2440)
 
