@@ -3,7 +3,7 @@ var session = require('marvin-js').session;
 
 (function checkConfiguration() {
 
-  var MANDATORY_CONFIGURATION_FIELDS = ['browser', 'baseUrl', 'featuresDir', 'stepsDir'];
+  var MANDATORY_CONFIGURATION_FIELDS = ['browsers', 'baseUrl', 'featuresDir', 'stepsDir'];
 
   function ConfigError(opt) {
     this.name = 'ConfigError';
@@ -24,8 +24,6 @@ var session = require('marvin-js').session;
 var fs = require('fs');
 var path = require('path');
 var childProcess = require('child_process');
-
-
 
 
 var wrench = require('wrench');
@@ -53,22 +51,43 @@ var builder = require('../lib/reporter/builder');
 var parser = require('../lib/utils/feature-parser');
 
 
+(function prepareTests() {
 
-var features = parser.parseFeatures(config.featuresDir, config.tags, config.language);
-session.queues = createQueues(features, config.threads || 1);
+  var threads = config.threads || 1;
+  var features = parser.parseFeatures(config.featuresDir, config.tags, config.language);
+
+  session.queues = []; 
+
+  var i = 0;
+  while(i < features.length) {
+    var size = Math.ceil((features.length - i) / threads--);
+    session.queues.push(features.slice(i, i + size));
+    i += size;
+  }
+
+}());
+
+
+
+
+
 var failed = false;
+var mochaDir = path.join('node_modules', 'marvin-js', 'lib', 'test-runner', 'mocha');
 
-session.queues.forEach(function(queue, index) {
-  var mochaDir = path.join('node_modules', 'marvin-js', 'lib', 'test-runner', 'mocha');
-  var thread = childProcess.fork(mochaDir, process.argv);
-
-  thread.send({ mocha: true, thread: index + 1, queue: queue, launchDate: session.launchDate });
-  thread.on("exit", function(code) {
-    if (code > 0) {
-      failed = true;
-    }
+config.browsers.forEach(function (browser) {
+  session.queues.forEach(function(queue, index) {
+    // launch mocha in a different thread
+    var thread = childProcess.fork(mochaDir, process.argv);
+    thread.send({ mocha: true, thread: index, browser: browser, queue: queue, launchDate: session.launchDate });
+    thread.on("exit", function(code) {
+      if (code > 0) {
+        failed = true;
+      }
+    });
   });
 });
+
+
 
 process.on('exit', function() {
   if (config.reporter === 'marvin') {
@@ -79,14 +98,6 @@ process.on('exit', function() {
 
 
 
-function createQueues(features, threads) {
-  var len = features.length, queues = [], i = 0;
-  while (i < len) {
-    var size = Math.ceil((len - i) / threads--);
-    queues.push(features.slice(i, i + size));
-    i += size;
-  }
-  return queues;
-}
+
 
 
