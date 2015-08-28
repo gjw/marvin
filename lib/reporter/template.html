@@ -73,7 +73,7 @@
                                 </div>
                                 {{#if logs}}
                                     <div class="step-logs">
-                                        <div>Output log:</div>
+                                        <h3>{{i18n 'output'}}:</h3>
                                         {{#logs}}
                                             {{#ifEqual type 'text'}}
                                                 <div class="log log-text log-level-{{ level }}">{{ text }}</div>
@@ -141,7 +141,7 @@
                                 </div>
                                 {{#if logs}}
                                     <div class="step-logs">
-                                        <div>Output log:</div>
+                                        <h3>{{i18n 'output'}}:</h3>
                                         {{#logs}}
                                             {{#ifEqual type 'text'}}
                                                 <div class="log log-text log-level-{{ level }}">{{ text }}</div>

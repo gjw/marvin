@@ -12,7 +12,8 @@
     "pending": "Pending",
     "skipped": "Skipped",
     "error": "Error",
-    "screenshot": "Screenshot"
+    "screenshot": "Screenshot",
+    "output": "Output log"
   },
 
   "french": {

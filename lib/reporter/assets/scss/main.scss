@@ -241,3 +241,11 @@ table.log-table {
   th { border-color: #999; }
 }
 
+.log-value dl {
+    dt, dd {
+        display: inline-block;
+    };
+    dt {
+        margin-right: 5px;
+    }
+}
