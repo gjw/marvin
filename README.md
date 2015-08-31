@@ -28,7 +28,7 @@ Since I've cloned LateRoom's Moonraker
 
   + [ ] it worked! currently working on improvement
 
-* [V] exploring the possibility of support for simultaneous test run on different browsers
+* [ ] exploring the possibility of support for simultaneous test run on different browsers
 
   + [ ] it worked! currently working on reporting for multiple browsers
 
