@@ -36,7 +36,7 @@ Since I've cloned LateRoom's Moonraker
 
 * [ ] make possible to include screenshot into the report
 
-* [ ] improve demo repository with more scenarios [marvin-demo](https://github.com/brunoscopelliti/marvin-demo) 
+* [ ] improve demo repository with more scenarios [marvin-demo](https://github.com/brunoscopelliti/marvin-demo)
 
 * [ ] integrating selenium-webdriver [until's module](https://github.com/SeleniumHQ/selenium/blob/master/javascript/node/selenium-webdriver/CHANGES.md#v2440)
 
@@ -59,7 +59,7 @@ Since I've cloned LateRoom's Moonraker
 
 ### Latest version
 
-The current version of marvin-js is 0.0.6.
+Please check out the [releases page](https://github.com/brunoscopelliti/marvin/releases) to check what is the latest version.
 
 ### Install
 
@@ -91,12 +91,13 @@ marvin-js is configured using a `config.json` file in your project root:
   "testTimeout": 60000,
   "elementTimeout": 5000,
 
-  "browser": {
-    "browserName": "chrome",
-    "chromeOptions": {
-      "args": ["--no-sandbox"]
-    }
-  }
+  "browsers": [{
+    "browserName": "chrome"
+  }, {
+    "seleniumServer": "http://ondemand.saucelabs.com:80/wd/hub",
+    "browserName": "safari",
+    "platform": "MAC"
+  }]
 }
 ```
 
@@ -105,22 +106,18 @@ marvin-js is configured using a `config.json` file in your project root:
 * `stepsDir`       - The path to your step definitions directory.*
 * `resultsDir`     - The path you'd like your results output to. *
 * `reporter`       - The reporter type you'd like marvin-js to use (more on this [below](#reporting)).
-* `threads`        - The number of threads you'd like to run with. (Default: 1)
+* `threads`        - The number of threads you'd like to run with. Note that Marvin will this number of threads for each browser. (default: 1)
 * `tags`           - Optional: Comma seperated list of feature tags (more on this [below](#feature-tags)).
 * `testTimeout`    - The maximum test (scenario step) timeout before its marked as a fail (ms). (Default: 60000)
 * `elementTimeout` - The maximum time selenium will continuously try to find an element on the page (ms). (Default: 3000)
-* `browser`        - An object describing your browser [desired capabilities](https://code.google.com/p/selenium/wiki/DesiredCapabilities).*
-* `seleniumServer` - Optional: Address of your remote selenium standalone server.
+* `browsers`       - An array of objects, each one describing one browser's [desired capabilities](https://code.google.com/p/selenium/wiki/DesiredCapabilities) and optionally a `seleniumServer` address.*
 * `language`       - Optional: sets the language to use (default: English).
-
 
 \* - Required.
 
-The example configuration above assumes using Chrome directly, to connect to a remote selenium server just add your server address to your `config.json`:
+#### Custom selenium servers
 
-`"seleniumServer": "http://127.0.0.1:4444/wd/hub"`.
-
-You can use this to connect to cloud service providers like [Saucelabs](https://saucelabs.com/) and [Browserstack](https://www.browserstack.com/automate). Please see [below]() for example browser configurations.
+The example configuration above assumes using Chrome directly, and you're connecting to a different Selenium server only for one browser. You can use this to connect to cloud service providers like [Saucelabs](https://saucelabs.com/) and [Browserstack](https://www.browserstack.com/automate), even for only one browser. Please see [below]() for example browser configurations.
 
 You can also set which language to use, using `language`, if you intend to use non English feature & step definition files. A full list of supported languages is available [here](https://github.com/acuminous/yadda/tree/master/lib/localisation).
 
@@ -317,41 +314,43 @@ To run your tests on cloud service providers like [Saucelabs](https://saucelabs.
 
 Saucelabs:
 ```json
-"seleniumServer": "http://ondemand.saucelabs.com:80/wd/hub",
-
-  "browser": {
-    "username": "USERNAME",
-    "accessKey": "KEY",
+"browsers": [{
+    "seleniumServer": "http://ondemand.saucelabs.com:80/wd/hub",
+    "username": "{{YOUR_SAUCELABS_USERNAME}}",
+    "accessKey": "{{YOUR_SAUCELABS_ACCESS_KEY}}",
     "browserName": "safari",
     "version": "8.0",
     "platform": "OS X 10.10"
-  }
+}]
 ```
 Browserstack:
 ```json
-"seleniumServer": "http://hub.browserstack.com/wd/hub",
-
-  "browser": {
-    "browserstack.user": "USERNAME",
-    "browserstack.key": "KEY",
+"browsers": [{
+    "seleniumServer": "http://hub.browserstack.com/wd/hub",
+    "browserstack.user": "{{YOUR_BROWSERSTACK_USERNAME}}",
+    "browserstack.key": "{{YOUR_BROWSERSTACK_KEY}}",
     "browserName": "Safari",
     "browser_version": "8.0",
     "os": "OS X",
     "os_version": "Yosemite",
     "resolution": "1920x1080"
-  }
+}]
 ```
 Note: As you can see in these examples each provider specifies capabilites differently so you will need to refer to your provider documentation:
 
-https://docs.saucelabs.com/reference/platforms-configurator/
-
-http://www.browserstack.com/automate/capabilities
+* https://docs.saucelabs.com/reference/platforms-configurator/
+* http://www.browserstack.com/automate/capabilities
 
 ### Running your tests in parallel
 
-marvin-js was designed with speed in mind and supports testing in parallel. To take advantage of this you simply need to increase the number of threads in the config.
+marvin-js was designed with speed in mind and supports testing in parallel. To take advantage of this you can either:
 
-marvin-js will split your feature files over the amount of threads set and starts a new child process (and browser) for each. If you have 4 feature files and want to use 2 threads, 2 features will be executed per thread / browser etc.
+- add new browsers in the `browsers` config
+- increase the number of `threads` in the config
+
+marvin-js will run all your browsers in parallel, with `threads` threads for each browser.
+
+When you use more the one `threads`, marvin-js will split your feature files over the amount of threads set and starts a new child process (and browser) for each. If you have 4 feature files and want to use 2 threads, 2 features will be executed per thread / browser etc.
 
 Parallel testing works as expected for remote driver connections just as it does locally. If you have powerful enough hardware to run your tests on and a large, high performing selenium grid instance to open connections to, you can dramatically reduce your test execution time.
 
