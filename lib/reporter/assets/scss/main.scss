@@ -101,11 +101,11 @@ li {
 
 .explorer {
     .icon {
-        background: url('../images/browsers_sprite_1x.png') no-repeat -80px -3px;
+        background: url('images/browsers_sprite_1x.png') no-repeat -80px -3px;
         width: 36px;
         height: 32px;
         @media (min-device-pixel-ratio: 2) {
-            background: url('../images/browsers_sprite_2x.png') no-repeat -80px -3px;
+            background: url('images/browsers_sprite_2x.png') no-repeat -80px -3px;
             background-size: 197px 40px;
             width: 35px;
             height: 33px;
@@ -115,11 +115,11 @@ li {
 
 .opera {
     .icon {
-        background: url('../images/browsers_sprite_1x.png') no-repeat -122px -3px;
+        background: url('images/browsers_sprite_1x.png') no-repeat -122px -3px;
         width: 32px;
         height: 34px;
         @media (min-device-pixel-ratio: 2) {
-            background: url('../images/browsers_sprite_2x.png') no-repeat -122px -3px;
+            background: url('images/browsers_sprite_2x.png') no-repeat -122px -3px;
             background-size: 197px 40px;
             width: 31px;
             height: 34px;
@@ -129,11 +129,11 @@ li {
 
 .safari {
     .icon {
-        background: url('../images/browsers_sprite_1x.png') no-repeat -160px -2px;
+        background: url('images/browsers_sprite_1x.png') no-repeat -160px -2px;
         width: 35px;
         height: 35px;
         @media (min-device-pixel-ratio: 2) {
-            background: url('../images/browsers_sprite_2x.png') no-repeat -160px -3px;
+            background: url('images/browsers_sprite_2x.png') no-repeat -160px -3px;
             background-size: 197px 40px;
             width: 34px;
             height: 35px;
