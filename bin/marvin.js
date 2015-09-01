@@ -1,5 +1,6 @@
-var config = require('marvin-js').config;
+
 var session = require('marvin-js').session;
+var config = require('marvin-js').config;
 
 (function checkConfiguration() {
 
