@@ -60,6 +60,10 @@ li {
     list-style-type: none;
 }
 
+.browserName {
+    text-transform: capitalize;
+}
+
 .feature {
     border-bottom: 1px dotted #ddd;
     padding-bottom: 20px;
