@@ -39,8 +39,8 @@
 		<h1>{{i18n 'title'}}</h1>
 
 		{{#each browsers}}
-		<section class="browser">
-			<h2><span class="browserName">{{browserName}}</span> <span class="browserVersion">{{version}}</span> {{#if platform}}<span class="platform"> on <span class="platformValue">{{platform}}</span></span>{{/if}}</h2>
+		<section class="browser {{browserName}}">
+			<h2><span class="icon"></span> <span class="browserName">{{browserName}}</span> <span class="browserVersion">{{version}}</span> {{#if platform}}<span class="platform"> on <span class="platformValue">{{platform}}</span></span>{{/if}}</h2>
 			{{#features}}
 
 			<section class="feature">

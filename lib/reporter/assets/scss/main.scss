@@ -64,6 +64,83 @@ li {
     text-transform: capitalize;
 }
 
+.browser {
+    .icon {
+        margin-right: 9px;
+        position: relative;
+        top: -5px;
+		float: left;
+    }
+}
+
+.chrome {
+    .icon {
+        background: url('images/browsers_sprite_1x.png') no-repeat -2px -2px;
+        width: 35px;
+        height: 35px;
+        @media (min-device-pixel-ratio: 2) {
+            background: url('images/browsers_sprite_2x.png') no-repeat -2px -3px;
+            background-size: 197px 40px;
+        }
+    }
+}
+
+.firefox {
+    .icon {
+        background: url('images/browsers_sprite_1x.png') no-repeat -42px -2px;
+        width: 35px;
+        height: 35px;
+        @media (min-device-pixel-ratio: 2) {
+            background: url('images/browsers_sprite_2x.png') no-repeat -42px -3px;
+            background-size: 197px 40px;
+            width: 34px;
+            height: 36px;
+        }
+    }
+}
+
+.explorer {
+    .icon {
+        background: url('../images/browsers_sprite_1x.png') no-repeat -80px -3px;
+        width: 36px;
+        height: 32px;
+        @media (min-device-pixel-ratio: 2) {
+            background: url('../images/browsers_sprite_2x.png') no-repeat -80px -3px;
+            background-size: 197px 40px;
+            width: 35px;
+            height: 33px;
+        }
+    }
+}
+
+.opera {
+    .icon {
+        background: url('../images/browsers_sprite_1x.png') no-repeat -122px -3px;
+        width: 32px;
+        height: 34px;
+        @media (min-device-pixel-ratio: 2) {
+            background: url('../images/browsers_sprite_2x.png') no-repeat -122px -3px;
+            background-size: 197px 40px;
+            width: 31px;
+            height: 34px;
+        }
+    }
+}
+
+.safari {
+    .icon {
+        background: url('../images/browsers_sprite_1x.png') no-repeat -160px -2px;
+        width: 35px;
+        height: 35px;
+        @media (min-device-pixel-ratio: 2) {
+            background: url('../images/browsers_sprite_2x.png') no-repeat -160px -3px;
+            background-size: 197px 40px;
+            width: 34px;
+            height: 35px;
+        }
+    }
+}
+
 .feature {
     border-bottom: 1px dotted #ddd;
     padding-bottom: 20px;
