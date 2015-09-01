@@ -38,7 +38,6 @@ var wrench = require('wrench');
   var now = new Date();
   session.launchDate = now.toUTCString().slice(5, -4).toLowerCase().replace(/[:\s]/g, "-");
   
-  wrench.mkdirSyncRecursive(path.join(config.resultsDir, 'screenshots'));
   wrench.mkdirSyncRecursive(path.join(config.resultsDir, session.launchDate, 'screenshots'));
 
 }());
