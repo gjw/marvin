@@ -103,7 +103,7 @@ marvin-js is configured using a `config.json` file in your project root:
 * `baseUrl`        - Your base url, page object urls will be relative to this.*
 * `featuresDir`    - The path to your features directory.*
 * `stepsDir`       - The path to your step definitions directory.*
-* `resultsDir`     - The path you'd like your results output to. (Default: /results)
+* `resultsDir`     - The path you'd like your results output to. *
 * `reporter`       - The reporter type you'd like marvin-js to use (more on this [below](#reporting)).
 * `threads`        - The number of threads you'd like to run with. (Default: 1)
 * `tags`           - Optional: Comma seperated list of feature tags (more on this [below](#feature-tags)).

@@ -3,7 +3,7 @@ var session = require('marvin-js').session;
 
 (function checkConfiguration() {
 
-  var MANDATORY_CONFIGURATION_FIELDS = ['browsers', 'baseUrl', 'featuresDir', 'stepsDir'];
+  var MANDATORY_CONFIGURATION_FIELDS = ['browsers', 'baseUrl', 'featuresDir', 'stepsDir', 'resultsDir'];
 
   function ConfigError(opt) {
     this.name = 'ConfigError';
@@ -29,20 +29,17 @@ var childProcess = require('child_process');
 var wrench = require('wrench');
 
 
-
-var baseResultsDir = config.resultsDir || 'results';
-
 (function prepareResultDirectory() {
 
-  if (config.clean && fs.existsSync(baseResultsDir)) {
-    wrench.rmdirSyncRecursive(baseResultsDir);
+  if (config.clean && fs.existsSync(config.resultsDir)) {
+    wrench.rmdirSyncRecursive(config.resultsDir);
   }
 
   var now = new Date();
   session.launchDate = now.toUTCString().slice(5, -4).toLowerCase().replace(/[:\s]/g, "-");
   
-  wrench.mkdirSyncRecursive(path.join(baseResultsDir, 'screenshots'));
-  wrench.mkdirSyncRecursive(path.join(baseResultsDir, session.launchDate, 'screenshots'));
+  wrench.mkdirSyncRecursive(path.join(config.resultsDir, 'screenshots'));
+  wrench.mkdirSyncRecursive(path.join(config.resultsDir, session.launchDate, 'screenshots'));
 
 }());
 
@@ -91,7 +88,7 @@ config.browsers.forEach(function (browser) {
 
 process.on('exit', function() {
   if (config.reporter === 'marvin') {
-    builder.prepareResults(path.join(baseResultsDir, session.launchDate));
+    builder.prepareResults(path.join(config.resultsDir, session.launchDate));
   }
   if (failed) process.exit(2);
 });
