@@ -16,9 +16,7 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="../assets/images/marvin-logo-1x.png"
-                 srcset="../assets/images/marvin-logo-1x.png 1x, ../assets/images/marvin-logo-2x.png 2x" width="200"
-                 height="28" alt="Marvin Logo">
+            <img src="../assets/images/marvin-logo-1x.png" srcset="../assets/images/marvin-logo-1x.png 1x, ../assets/images/marvin-logo-2x.png 2x" width="200" height="28" alt="Marvin Logo">
         </a>
         {{#with stats}}
         <ul class="stats">
@@ -32,19 +30,19 @@
     </div>
 </nav>
 
-<h1 class="page-title">{{i18n 'title'}}</h1>
-
 <div class="container">
+
+    <h1 class="page-title bold">{{i18n 'title'}}</h1>
+
     <ul id="browsers-list" class="nav nav-tabs nav-justified">
         {{#each browsers}}
-        <li role="presentation" class="browser {{#if @first}}active{{/if}}">
+        <li role="presentation" class="browser-tab {{#if @first}}active{{/if}}">
             <a class="browser" href="#{{anchor platform browserName version}}">
-                <span class="icon"></span>
-                        <span class="browser">
-                            <span class="name">{{ browserName }}</span>
-                            {{#if version}}<span class="version">{{ version }}</span>{{/if}}
+                <span class="icon sprt-{{ browserName }}"></span>
+                        <span class="info">
+                            <span class="name">{{ browserName }}{{#if version}} {{ version }}{{/if}}</span>
+                            {{#if platform}}<span class="platform">{{ platform }}</span>{{/if}}
                         </span>
-                {{#if platform}}<span class="platform">{{ platform }}</span>{{/if}}
             </a>
         </li>
         {{/each}}
@@ -53,8 +51,7 @@
 
     <div class="tab-content">
         {{#each browsers}}
-        <div role="tabpanel" class="tab-pane fade in {{#if @first}}active{{/if}}"
-             id="{{anchor platform browserName version}}" aria-labelledby="#{{anchor platform browserName version}}">
+        <div role="tabpanel" class="tab-pane fade in {{#if @first}}active{{/if}}" id="{{anchor platform browserName version}}" aria-labelledby="#{{anchor platform browserName version}}">
 
             {{#features}}
 
@@ -257,13 +254,27 @@
 </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="../assets/js/jquery-1.9.1.js"></script>
 <script src="../assets/js/tab.js"></script>
 
 <script type="text/javascript">
     $(function () {
 
-        $("#browsers-list a").click(function (e) {
+        $("#browsers-list a").click(function(e) {
             e.preventDefault();
             $(this).tab('show');
         })

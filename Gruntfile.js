@@ -2,6 +2,7 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-spritesmith');
 
     grunt.initConfig({
         sass: {
@@ -15,6 +16,18 @@ module.exports = function (grunt) {
                 }
             }
         },
+        sprite: {
+            icons: {
+                src: './graphics/browsers/*.png',
+                dest: './lib/reporter/assets/images/browsers.png',
+                destCss: './lib/reporter/assets/scss/partials/_browsers.scss',
+                imgPath: '../assets/images/browsers.png',
+                algorithm: 'binary-tree',
+                engine: 'pngsmith',
+                cssTemplate: './lib/reporter/assets/scss/sprite-template.mustache',
+                cssFormat: 'scss'
+            }
+        },
         watch: {
           css: {
             files: '**/*.scss',
@@ -23,6 +36,6 @@ module.exports = function (grunt) {
         },
     });
 
-    grunt.registerTask('default', ['sass:dist', 'watch']);
+    grunt.registerTask('default', ['sprite:icons', 'sass:dist', 'watch']);
 
 };

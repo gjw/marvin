@@ -26,8 +26,28 @@ ul.stats {
   li { }
 }
 
+
+#browsers-list {
+  .browser-tab {
+
+    .name {
+      font-size: 20px;
+      text-transform: capitalize;
+    }
+
+    .platform {
+      display: block;
+    }
+
+  }
+}
+
+
+
+
 .tab-content {
   border: 1px solid #ddd;
   border-top-color: #fff;
   padding: 5px 15px;
 }
+

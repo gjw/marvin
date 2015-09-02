@@ -1,76 +1,141 @@
-.browser {
-    .icon {
-        margin-right: 9px;
-        position: relative;
-        top: -5px;
-        float: left;
-    }
-}
+    $canary-x: 0px;
+    $canary-y: 0px;
+    $canary-offset-x: 0px;
+    $canary-offset-y: 0px;
+    $canary-width: 48px;
+    $canary-height: 48px;
+    $canary-total-width: 144px;
+    $canary-total-height: 144px;
+    $canary-image: '../assets/images/browsers.png';
+    $canary: 0px 0px 0px 0px 48px 48px 144px 144px '../assets/images/browsers.png';
+    $chrome-x: 48px;
+    $chrome-y: 0px;
+    $chrome-offset-x: -48px;
+    $chrome-offset-y: 0px;
+    $chrome-width: 48px;
+    $chrome-height: 48px;
+    $chrome-total-width: 144px;
+    $chrome-total-height: 144px;
+    $chrome-image: '../assets/images/browsers.png';
+    $chrome: 48px 0px -48px 0px 48px 48px 144px 144px '../assets/images/browsers.png';
+    $edge-x: 0px;
+    $edge-y: 48px;
+    $edge-offset-x: 0px;
+    $edge-offset-y: -48px;
+    $edge-width: 48px;
+    $edge-height: 48px;
+    $edge-total-width: 144px;
+    $edge-total-height: 144px;
+    $edge-image: '../assets/images/browsers.png';
+    $edge: 0px 48px 0px -48px 48px 48px 144px 144px '../assets/images/browsers.png';
+    $firefox-nightly-x: 48px;
+    $firefox-nightly-y: 48px;
+    $firefox-nightly-offset-x: -48px;
+    $firefox-nightly-offset-y: -48px;
+    $firefox-nightly-width: 48px;
+    $firefox-nightly-height: 48px;
+    $firefox-nightly-total-width: 144px;
+    $firefox-nightly-total-height: 144px;
+    $firefox-nightly-image: '../assets/images/browsers.png';
+    $firefox-nightly: 48px 48px -48px -48px 48px 48px 144px 144px '../assets/images/browsers.png';
+    $firefox-x: 96px;
+    $firefox-y: 0px;
+    $firefox-offset-x: -96px;
+    $firefox-offset-y: 0px;
+    $firefox-width: 48px;
+    $firefox-height: 48px;
+    $firefox-total-width: 144px;
+    $firefox-total-height: 144px;
+    $firefox-image: '../assets/images/browsers.png';
+    $firefox: 96px 0px -96px 0px 48px 48px 144px 144px '../assets/images/browsers.png';
+    $ie-x: 96px;
+    $ie-y: 48px;
+    $ie-offset-x: -96px;
+    $ie-offset-y: -48px;
+    $ie-width: 48px;
+    $ie-height: 48px;
+    $ie-total-width: 144px;
+    $ie-total-height: 144px;
+    $ie-image: '../assets/images/browsers.png';
+    $ie: 96px 48px -96px -48px 48px 48px 144px 144px '../assets/images/browsers.png';
+    $opera-x: 0px;
+    $opera-y: 96px;
+    $opera-offset-x: 0px;
+    $opera-offset-y: -96px;
+    $opera-width: 48px;
+    $opera-height: 48px;
+    $opera-total-width: 144px;
+    $opera-total-height: 144px;
+    $opera-image: '../assets/images/browsers.png';
+    $opera: 0px 96px 0px -96px 48px 48px 144px 144px '../assets/images/browsers.png';
+    $safari-x: 48px;
+    $safari-y: 96px;
+    $safari-offset-x: -48px;
+    $safari-offset-y: -96px;
+    $safari-width: 48px;
+    $safari-height: 48px;
+    $safari-total-width: 144px;
+    $safari-total-height: 144px;
+    $safari-image: '../assets/images/browsers.png';
+    $safari: 48px 96px -48px -96px 48px 48px 144px 144px '../assets/images/browsers.png';
 
-.chrome {
-    .icon {
-        background: url('images/browsers_sprite_1x.png') no-repeat -2px -2px;
-        width: 35px;
-        height: 35px;
-        @media (min-device-pixel-ratio: 2) {
-            background: url('images/browsers_sprite_2x.png') no-repeat -2px -3px;
-            background-size: 197px 40px;
-        }
+    @mixin sprite-width($sprite) {
+    width: nth($sprite, 5);
     }
-}
 
-.firefox {
-    .icon {
-        background: url('images/browsers_sprite_1x.png') no-repeat -42px -2px;
-        width: 35px;
-        height: 35px;
-        @media (min-device-pixel-ratio: 2) {
-            background: url('images/browsers_sprite_2x.png') no-repeat -42px -3px;
-            background-size: 197px 40px;
-            width: 34px;
-            height: 36px;
-        }
+    @mixin sprite-height($sprite) {
+    height: nth($sprite, 6);
     }
-}
 
-.explorer {
-    .icon {
-        background: url('../images/browsers_sprite_1x.png') no-repeat -80px -3px;
-        width: 36px;
-        height: 32px;
-        @media (min-device-pixel-ratio: 2) {
-            background: url('../images/browsers_sprite_2x.png') no-repeat -80px -3px;
-            background-size: 197px 40px;
-            width: 35px;
-            height: 33px;
-        }
+    @mixin sprite-position($sprite) {
+    $sprite-offset-x: nth($sprite, 3);
+    $sprite-offset-y: nth($sprite, 4);
+    background-position: $sprite-offset-x  $sprite-offset-y;
     }
-}
 
-.opera {
-    .icon {
-        background: url('../images/browsers_sprite_1x.png') no-repeat -122px -3px;
-        width: 32px;
-        height: 34px;
-        @media (min-device-pixel-ratio: 2) {
-            background: url('../images/browsers_sprite_2x.png') no-repeat -122px -3px;
-            background-size: 197px 40px;
-            width: 31px;
-            height: 34px;
-        }
+    @mixin sprite-image($sprite) {
+    $sprite-image: nth($sprite, 9);
+    background-image: url(#{$sprite-image});
     }
-}
 
-.safari {
-    .icon {
-        background: url('../images/browsers_sprite_1x.png') no-repeat -160px -2px;
-        width: 35px;
-        height: 35px;
-        @media (min-device-pixel-ratio: 2) {
-            background: url('../images/browsers_sprite_2x.png') no-repeat -160px -3px;
-            background-size: 197px 40px;
-            width: 34px;
-            height: 35px;
-        }
+    @mixin sprite($sprite) {
+    @include sprite-image($sprite);
+    @include sprite-position($sprite);
+    @include sprite-width($sprite);
+    @include sprite-height($sprite);
+    display: inline-block;
     }
-}
+
+
+    .sprt-canary {
+    @include sprite($canary);
+    vertical-align: middle;
+    }
+    .sprt-chrome {
+    @include sprite($chrome);
+    vertical-align: middle;
+    }
+    .sprt-edge {
+    @include sprite($edge);
+    vertical-align: middle;
+    }
+    .sprt-firefox-nightly {
+    @include sprite($firefox-nightly);
+    vertical-align: middle;
+    }
+    .sprt-firefox {
+    @include sprite($firefox);
+    vertical-align: middle;
+    }
+    .sprt-ie {
+    @include sprite($ie);
+    vertical-align: middle;
+    }
+    .sprt-opera {
+    @include sprite($opera);
+    vertical-align: middle;
+    }
+    .sprt-safari {
+    @include sprite($safari);
+    vertical-align: middle;
+    }
