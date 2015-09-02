@@ -2,42 +2,26 @@
 
 [![NPM](https://nodei.co/npm/marvin-js.png?downloads=true&downloadRank=true)](https://nodei.co/npm/marvin-js/)
 
-**marvin-js was born as a local clone of [LateRooms' Moonraker](https://github.com/LateRoomsGroup/moonraker)**
-
-An easy to use lightweight web testing framework for Node, designed for speed, maintainability and collaboration. Bringing together everything you need out of the box - familiar BDD features/scenarios, a simple page object library, parallel testing and pretty rich reports.
+An easy to use lightweight web testing framework for Node, designed for speed, maintainability and collaboration, now multi-browser. Bringing together everything you need out of the box - familiar BDD features/scenarios, a simple page object library, parallel testing and pretty rich reports.
 
 Integrating [Yadda 0.15.2](https://github.com/acuminous/yadda), [Selenium-Webdriver 2.46.1](https://code.google.com/p/selenium/wiki/WebDriverJs), [Mocha 2.2.5](http://mochajs.org/) & [Chai 3.2.0](http://chaijs.com/).
 
-## Planned development
+#### Credits
 
-Since I've cloned LateRoom's Moonraker
+marvin-js was born as a clone of LateRooms' [Moonraker](https://github.com/LateRoomsGroup/moonraker).
+
+## Done / planned development since we cloned Moonraker
 
 * [X] **updated all dependencies**; simplified report's dependencies management; removed coffeescript (not a big fan, sorry)
-
 * [X] refactoring directory tree
-
 * [X] support Yadda's custom dictionary
-
-* [X] store report in different folder, so that a new test does not clear result's history; it is possible to enable the cleaning of the result folder via configuration, with `"clean": true`
-
-* [X] POC logging from test's step in the report
-
-  + [ ] it worked! currently working on improvement
-
+* [X] store reports in different folders, so that a new test does not clear result's history; it is possible to enable the cleaning of the result folder via configuration, with `"clean": true`
+* [X] POC logging from test steps in the report
 * [X] POC not-blocking assertions
-
-  + [ ] it worked! currently working on improvement
-
-* [ ] exploring the possibility of support for simultaneous test run on different browsers
-
-  + [ ] it worked! currently working on reporting for multiple browsers
-
+* [X] Support for simultaneous test run on multiple browsers and multiple selenium hubs
 * [ ] refactoring feature-parser.js: it should not be in /utils
-
 * [ ] make possible to include screenshot into the report
-
 * [ ] improve demo repository with more scenarios [marvin-demo](https://github.com/brunoscopelliti/marvin-demo)
-
 * [ ] integrating selenium-webdriver [until's module](https://github.com/SeleniumHQ/selenium/blob/master/javascript/node/selenium-webdriver/CHANGES.md#v2440)
 
 ## Index
@@ -56,10 +40,6 @@ Since I've cloned LateRoom's Moonraker
 * [Reporting](#reporting)
 * [Page object reference](#page-object-reference)
 * [Session reference](#session-reference)
-
-### Latest version
-
-Please check out the [releases page](https://github.com/brunoscopelliti/marvin/releases) to check what is the latest version.
 
 ### Install
 
