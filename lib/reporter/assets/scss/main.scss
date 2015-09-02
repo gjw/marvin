@@ -12,9 +12,22 @@ $failure: #e74c3c;
 $background: #ECF0F1;
 
 .navbar {
-    background: $navBar;
-    border: 0;
-    .navbar-brand {
-        color: white;
-    }
+  background: $navBar;
+  border: 0;
+  .navbar-brand {
+    color: white;
+  }
+}
+
+ul.stats {
+  display: flex;
+  list-style: none;
+
+  li { }
+}
+
+.tab-content {
+  border: 1px solid #ddd;
+  border-top-color: #fff;
+  padding: 5px 15px;
 }

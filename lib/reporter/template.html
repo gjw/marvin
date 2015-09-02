@@ -1,44 +1,61 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Test report</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="shortcut icon" type="image/ico" href="images/favicon.ico"/>
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="../assets/images/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
-  <link rel="stylesheet" href="../assets/main.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" type="image/ico" href="images/favicon.ico"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+    <link rel="stylesheet" href="../assets/main.min.css">
 </head>
 <body>
-<div class="main">
 
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="../assets/images/marvin-logo-1x.png" srcset="../assets/images/marvin-logo-1x.png 1x, ../assets/images/marvin-logo-2x.png 2x" width="200" height="28" alt="Marvin Logo">
-      </a>
-      {{#with stats}}
+        <a class="navbar-brand" href="#">
+            <img src="../assets/images/marvin-logo-1x.png"
+                 srcset="../assets/images/marvin-logo-1x.png 1x, ../assets/images/marvin-logo-2x.png 2x" width="200"
+                 height="28" alt="Marvin Logo">
+        </a>
+        {{#with stats}}
         <ul class="stats">
-          <li><span>{{i18n 'passed'}}:</span> <strong>{{passes}}</strong></li>
-          <li><span>{{i18n 'failed'}}:</span> <strong>{{failures}}</strong></li>
-          <li><span>{{i18n 'skipped'}}:</span> <strong>{{skipped}}</strong></li>
-          <li>{{i18n 'duration'}}: <strong>{{duration}}s</strong></li>
-          <li>{{i18n 'threads'}}: <strong>{{threads}}</strong></li>
+            <li><span>{{i18n 'passed'}}:</span> <strong>{{passes}}</strong></li>
+            <li><span>{{i18n 'failed'}}:</span> <strong>{{failures}}</strong></li>
+            <li><span>{{i18n 'skipped'}}:</span> <strong>{{skipped}}</strong></li>
+            <li>{{i18n 'duration'}}: <strong>{{duration}}s</strong></li>
+            <li>{{i18n 'threads'}}: <strong>{{threads}}</strong></li>
         </ul>
-      {{/with}}
+        {{/with}}
     </div>
-  </nav>
+</nav>
 
-    <section class="reporter container">
-        <h1>{{i18n 'title'}}</h1>
+<h1 class="page-title">{{i18n 'title'}}</h1>
 
+<div class="container">
+    <ul id="browsers-list" class="nav nav-tabs nav-justified">
         {{#each browsers}}
-        <section class="browser {{browserName}}">
-            <h2><span class="icon"></span> <span class="browserName">{{browserName}}</span> <span
-                    class="browserVersion">{{version}}</span> {{#if platform}}<span class="platform"> on <span
-                    class="platformValue">{{platform}}</span></span>{{/if}}</h2>
+        <li role="presentation" class="browser {{#if @first}}active{{/if}}">
+            <a class="browser" href="#{{anchor platform browserName version}}">
+                <span class="icon"></span>
+                        <span class="browser">
+                            <span class="name">{{ browserName }}</span>
+                            {{#if version}}<span class="version">{{ version }}</span>{{/if}}
+                        </span>
+                {{#if platform}}<span class="platform">{{ platform }}</span>{{/if}}
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+
+
+    <div class="tab-content">
+        {{#each browsers}}
+        <div role="tabpanel" class="tab-pane fade in {{#if @first}}active{{/if}}"
+             id="{{anchor platform browserName version}}" aria-labelledby="#{{anchor platform browserName version}}">
+
             {{#features}}
 
             <section class="feature">
@@ -231,21 +248,36 @@
                 {{/scenarios}}
             </section>
 
-
             {{/features}}
-        </section>
-        {{/each}}
 
-    </section>
+        </div>
+        {{/each}}
+    </div>
+
 </div>
-<script src="jquery/jquery-1.9.1.js"></script>
+
+
+<script src="../assets/js/jquery-1.9.1.js"></script>
+<script src="../assets/js/tab.js"></script>
+
 <script type="text/javascript">
     $(function () {
+
+        $("#browsers-list a").click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+        })
+
+
         $(".dd").click(function () {
             var display = 'none' == $(this).next(".dd-content").css('display') ? 'table-row-group' : 'none';
             $(this).next(".scenario-content").css('display', display);
         });
+
+
     });
+
+
 </script>
 </body>
 </html>
