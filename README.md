@@ -1,10 +1,10 @@
 # marvin-js
 
+![MarvinEyes](https://raw.githubusercontent.com/brunoscopelliti/marvin/master/graphics/logo/marvin-eyes.png)
+
+An easy to use lightweight web testing framework for Node, designed for speed, maintainability and collaboration, now multi-browser. Bringing together everything you need out of the box - familiar BDD features/scenarios, a simple page object library, parallel testing and pretty rich reports, integrating [Yadda 0.15.2](https://github.com/acuminous/yadda), [Selenium-Webdriver 2.46.1](https://code.google.com/p/selenium/wiki/WebDriverJs), [Mocha 2.2.5](http://mochajs.org/) & [Chai 3.2.0](http://chaijs.com/).
+
 [![NPM](https://nodei.co/npm/marvin-js.png?downloads=true&downloadRank=true)](https://nodei.co/npm/marvin-js/)
-
-An easy to use lightweight web testing framework for Node, designed for speed, maintainability and collaboration, now multi-browser. Bringing together everything you need out of the box - familiar BDD features/scenarios, a simple page object library, parallel testing and pretty rich reports.
-
-Integrating [Yadda 0.15.2](https://github.com/acuminous/yadda), [Selenium-Webdriver 2.46.1](https://code.google.com/p/selenium/wiki/WebDriverJs), [Mocha 2.2.5](http://mochajs.org/) & [Chai 3.2.0](http://chaijs.com/).
 
 #### Credits
 
