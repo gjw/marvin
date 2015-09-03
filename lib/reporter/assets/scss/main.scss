@@ -1,64 +1,101 @@
 $icon-font-path: "lib/reporter/assets/scss/bootstrap/fonts/";
 $font-size-base: 16px !default;
 
-@import "./lib/reporter/assets/scss/bootstrap/css/_bootstrap";
-@import "./lib/reporter/assets/scss/partials/_typography";
-@import "./lib/reporter/assets/scss/partials/_browsers";
+@import "./bootstrap/css/_bootstrap";
+@import "./partials/_typography";
+@import "./partials/_browsers";
 
-$navBar: #efefee;
+$navBar0: #Dee1E6;
+$navBar1: #DCDFE4;
+$navBar2: #ced1d6;
 $secondary: #3498DB;
 $success: #2ecc71;
 $failure: #e74c3c;
 $background: #ECF0F1;
 
-.bold {
-  font-weight: bold;
-  text-shadow: 1px 1px 2px #333;
-  text-transform: uppercase;
-}
-
 h1.page-title {
-  margin: 80px 0 20px;
+	margin: 130px 0 20px;
 }
-
 
 .navbar {
-  background: $navBar;
-  border: 0;
-  .navbar-brand {
-    color: white;
-  }
+	background-color: $navBar1;
+	background-image: linear-gradient(to bottom, $navBar0, $navBar1, $navBar2);
+
+	//border: 0;
+
+	
+
 }
 
-ul.stats {
-  display: flex;
-  list-style: none;
+.navbar-brand {
+	//line-height: 97px;
+	float: left;
+	padding: 50px 0 0 160px;
+	height: 97px;
+	color: #333;
+	background-image: url("images/marvin-logo-1x.jpg");
+	background-repeat: no-repeat;
+	@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+		background-image: url("images/marvin-logo-2x.jpg");
+		background-size: 150px 97px;
+	}
+}
 
-  li {}
+.stats {
+	//margin-top: 55px;
+	//margin: 0;
+	padding-top: 50px;
+	display: flex;
+	list-style: none;
+	justify-content: flex-end;
+
+	.value {
+		padding: .3em;
+		border-radius: 5px;
+		background-color: rgb(202, 208, 218);
+		color: black;
+	}
+
+	/*.passed {
+		.value {
+			background-color: darkgreen;
+			color: white;
+		}
+	}*/
+
+	.failed {
+		.value {
+			background-color: darkred;
+			color: white;
+		}
+	}
+
+	li {
+		margin-right: .66em;
+	}
+
+	.text {
+		text-transform: capitalize;
+	}
 }
 
 #browsers-list {
-  .browser-tab {
-
-    .name {
-      font-size: 20px;
-      text-transform: capitalize;
-    }
-
-    .platform {
-      display: block;
-    }
-
-  }
+	.browser-tab {
+		.icon {
+			margin-right: 5px;
+		}
+		.name {
+			font-size: 20px;
+			text-transform: capitalize;
+		}
+		.platform {
+			display: block;
+		}
+	}
 }
-
-
-
 
 .tab-content {
-  border: 1px solid #ddd;
-  border-top-color: #fff;
-  padding: 5px 15px;
+	border: 1px solid #ddd;
+	border-top-color: #fff;
+	padding: 5px 15px;
 }
-
-
