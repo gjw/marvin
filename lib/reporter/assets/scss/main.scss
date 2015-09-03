@@ -99,3 +99,19 @@ h1.page-title {
 	border-top-color: #fff;
 	padding: 5px 15px;
 }
+
+.dd  {
+	cursor: pointer;
+}
+
+.scenario {
+	.label {
+		min-width: 6em;
+		display: inline-block;
+	}
+}
+
+.scenario-content {
+	display: none;
+	padding: 15px 17px;
+}

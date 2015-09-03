@@ -15,7 +15,9 @@
 
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
-            <a class="navbar-brand" href="#">Don't panic</a>
+            <a class="navbar-brand" href="#">
+                Don't panic
+            </a>
             {{#with stats}}
             <ul class="stats">
                 <li class="passed"><span class="text">{{i18n 'passed'}}:</span> <span class="value">{{passes}}</span></li>
@@ -54,7 +56,7 @@
                 {{#features}}
 
                 <section class="feature">
-                    <h3><span>{{i18n 'feature'}}:</span> {{title}}</h3>
+                    <h3><span>{{i18n 'Feature'}}:</span> {{title}}</h3>
                     <ul class="info">
                         {{#each description}}
                         <li>{{ this }}</li>
@@ -73,7 +75,7 @@
                             {{#ifEqual status 'fail'}}
                             <span class="label label-danger">{{i18n 'failed'}}</span>
                             {{/ifEqual}}
-                            <span class="scenario-text">{{i18n 'scenario'}}: {{title}}</span>
+                            <span class="scenario-text">{{i18n 'Scenario'}}: {{title}}</span>
                         </div>
 
                         <div class="scenario-content dd-content">
@@ -81,8 +83,8 @@
 
                         {{#ifEqual status 'pass'}}
                         <div class="single-step-result">
-                            <div class="scenario-text">{{title}}</div>
-                            <span class="label label-success">{{i18n 'success'}}</span>
+	                        <span class="label label-success">{{i18n 'success'}}</span>
+	                        <span class="scenario-text">{{title}}</span>
                         </div>
                         {{#if logs}}
                         <div class="step-logs">
@@ -139,15 +141,15 @@
 
                         {{#ifEqual status 'pending'}}
                         <div class="single-step-result">
-                            <div class="scenario-text">{{title}}</div>
                             <span class="label label-primary">{{i18n 'pending'}}</span>
+	                        <span class="scenario-text">{{title}}</span>
                         </div>
                         {{/ifEqual}}
 
                         {{#ifEqual status 'fail'}}
                         <div class="single-step-result">
-                            <div class="scenario-text">{{title}}</div>
                             <span class="label label-danger">{{i18n 'failed'}}</span>
+	                        <span class="scenario-text">{{title}}</span>
                         </div>
                         {{#if logs}}
                         <div class="step-logs">
@@ -211,8 +213,8 @@
 
                         {{#ifEqual status 'skipped'}}
                         <div class="single-step-result">
-                            <div class="scenario-text">{{title}}</div>
                             <span class="label label-warning">{{i18n 'skipped'}}</span>
+	                        <span class="scenario-text">{{title}}</span>
                         </div>
                         {{/ifEqual}}
 
@@ -258,7 +260,7 @@
 
 
             $(".dd").click(function () {
-                var display = 'none' == $(this).next(".dd-content").css('display') ? 'table-row-group' : 'none';
+                var display = 'none' == $(this).next(".dd-content").css('display') ? 'block' : 'none';
                 $(this).next(".scenario-content").css('display', display);
             });
 
