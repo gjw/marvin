@@ -11,6 +11,17 @@ $success: #2ecc71;
 $failure: #e74c3c;
 $background: #ECF0F1;
 
+.bold {
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #333;
+  text-transform: uppercase;
+}
+
+h1.page-title {
+  margin: 80px 0 20px;
+}
+
+
 .navbar {
   background: $navBar;
   border: 0;
@@ -23,9 +34,8 @@ ul.stats {
   display: flex;
   list-style: none;
 
-  li { }
+  li {}
 }
-
 
 #browsers-list {
   .browser-tab {
@@ -50,4 +60,5 @@ ul.stats {
   border-top-color: #fff;
   padding: 5px 15px;
 }
+
 
