@@ -104,13 +104,24 @@ h1.page-title {
 
 .dd {
 	cursor: pointer;
+	&:hover {
+		background-color: #ddd;
+	}
 }
 
 .scenario {
 	.label {
 		min-width: 6em;
-		display: inline-block;
+		display: block;
+		float: left;
+		margin-right: 7px;
 	}
+}
+
+.scenario-header {
+	line-height: 16px;
+	padding: 2px 0;
+	font-weight: bold;
 }
 
 .scenario-content {
