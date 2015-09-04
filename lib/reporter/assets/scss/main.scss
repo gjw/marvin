@@ -5,13 +5,15 @@ $font-size-base: 16px !default;
 @import "./partials/_typography";
 @import "./partials/_browsers";
 
-$navBar0: #Dee1E6;
+$navBar0: #DEE1E6;
 $navBar1: #DCDFE4;
-$navBar2: #ced1d6;
+$navBar2: #CED1D6;
 $secondary: #3498DB;
-$success: #2ecc71;
-$failure: #e74c3c;
+$success: #2ECC71;
+$failure: #E74C3C;
 $background: #ECF0F1;
+$borderColor: #DDD;
+$hoverBgColor: #EEE;
 
 h1.page-title {
 	margin: 130px 0 20px;
@@ -97,15 +99,15 @@ h1.page-title {
 }
 
 .tab-content {
-	border: 1px solid #ddd;
-	border-top-color: #fff;
+	border: 1px solid $borderColor;
+	border-top: none;
 	padding: 5px 15px;
 }
 
 .dd {
 	cursor: pointer;
 	&:hover {
-		background-color: #ddd;
+		background-color: $hoverBgColor;
 	}
 }
 
@@ -126,7 +128,7 @@ h1.page-title {
 
 .scenario-content {
 	display: none;
-	border-left: 1px dotted #CACACA;
+	border-left: 1px dotted darken($borderColor, 20%);
 	margin: 5px 0;
 	padding: 6px 15px;
 }
