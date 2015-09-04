@@ -23,8 +23,6 @@ h1.page-title {
 
 	//border: 0;
 
-	
-
 }
 
 .navbar-brand {
@@ -56,17 +54,21 @@ h1.page-title {
 		color: black;
 	}
 
-	/*.passed {
-		.value {
-			background-color: darkgreen;
-			color: white;
+	&.has-failures {
+		.failures {
+			.value {
+				background-color: darkred;
+				color: white;
+			}
 		}
-	}*/
+	}
 
-	.failed {
-		.value {
-			background-color: darkred;
-			color: white;
+	&:not(.has-failures) {
+		.passes {
+			.value {
+				background-color: darkgreen;
+				color: white;
+			}
 		}
 	}
 
@@ -100,7 +102,7 @@ h1.page-title {
 	padding: 5px 15px;
 }
 
-.dd  {
+.dd {
 	cursor: pointer;
 }
 

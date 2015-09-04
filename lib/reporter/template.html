@@ -19,9 +19,9 @@
                 Don't panic
             </a>
             {{#with stats}}
-            <ul class="stats">
-                <li class="passed"><span class="text">{{i18n 'passed'}}:</span> <span class="value">{{passes}}</span></li>
-                <li class="failed"><span class="text">{{i18n 'failed'}}:</span> <span class="value">{{failures}}</span></li>
+            <ul class="stats {{#if failures}}has-failures{{/if}}">
+                <li class="passes"><span class="text">{{i18n 'passed'}}:</span> <span class="value">{{passes}}</span></li>
+                <li class="failures"><span class="text">{{i18n 'failed'}}:</span> <span class="value">{{failures}}</span></li>
                 <li><span class="text">{{i18n 'skipped'}}:</span> <span class="value">{{skipped}}</span></li>
                 <li><span class="text">{{i18n 'duration'}}:</span> <span class="value">{{duration}}s</span></li>
                 <li><span class="text">{{i18n 'threads'}}:</span> <span class="value">{{threads}}</span></li>
