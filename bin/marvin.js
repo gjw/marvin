@@ -90,7 +90,9 @@ process.on('exit', function() {
   if (config.reporter === 'marvin') {
     builder.prepareResults(path.join(config.resultsDir, session.launchDate));
   }
-  if (failed) process.exit(2);
+  if (failed) {
+    process.exit(2);
+  }
 });
 
 
