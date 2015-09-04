@@ -86,53 +86,7 @@
 												<span class="label label-success">{{i18n 'success'}}</span>
 												<span class="scenario-text">{{title}}</span>
 											</div>
-											{{#if logs}}
-												<div class="step-logs dd-content bg-info text-info">
-													<!--<h3>{{i18n 'output'}}:</h3>-->
-													{{#logs}}
-														{{#ifEqual type 'text'}}
-															<div class="log log-text log-level-{{ level }}">{{ text }}</div>
-														{{/ifEqual}}
-
-														{{#ifEqual type 'assertion'}}
-															<div class="log log-assert log-assert-{{ status }}">{{ text }}</div>
-														{{/ifEqual}}
-
-														{{#ifEqual type 'value'}}
-														<dl class="log log-value">
-															<dt>{{ key }}:</dt>
-															<dd>{{ value }}</dd>
-														</dl>
-														{{/ifEqual}}
-
-														{{#ifEqual type 'table'}}
-															<table class="log log-table table table-striped table-condensed table-bordered table-hover">
-																{{#if text}}
-																	<caption>{{ text }}:</caption>
-																{{/if}}
-																{{#with data}}
-																<thead>
-																<tr>
-																	{{#keys}}
-																	<th>{{ this }}</th>
-																	{{/keys}}
-																</tr>
-																</thead>
-																<tbody>
-																{{#entries}}
-																<tr>
-																	{{#this}}
-																	<td>{{ this }}</td>
-																	{{/this}}
-																</tr>
-																{{/entries}}
-																</tbody>
-																{{/with}}
-															</table>
-														{{/ifEqual}}
-													{{/logs}}
-												</div>
-											{{/if}}
+											{{> logsPartial}}
 										{{/ifEqual}}
 
 										{{#ifEqual status 'pending'}}
@@ -148,60 +102,11 @@
 												<span class="label label-danger">{{i18n 'failed'}}</span>
 												<span class="scenario-text">{{title}}</span>
 											</div>
-											{{#if logs}}
-												<div class="step-logs dd-content bg-info text-info">
-													<!--<h3>{{i18n 'output'}}:</h3>-->
-													{{#logs}}
-														{{#ifEqual type 'text'}}
-															<div class="log log-text log-level-{{ level }}">{{ text }}</div>
-														{{/ifEqual}}
-
-														{{#ifEqual type 'assertion'}}
-															<div class="log log-assert log-assert-{{ status }}">{{ text }}</div>
-														{{/ifEqual}}
-
-														{{#ifEqual type 'value'}}
-															<div class="log log-value">
-																<dl>
-																	<dt>{{ key }}:</dt>
-																	<dd>{{ value }}</dd>
-																</dl>
-															</div>
-														{{/ifEqual}}
-
-														{{#ifEqual type 'table'}}
-															<table class="log log-table table table-striped table-condensed table-bordered table-hover">
-																{{#if text}}
-																	<caption>{{ text }}:</caption>
-																{{/if}}
-																{{#with data}}
-																	<thead>
-																		<tr>
-																			{{#keys}}
-																				<th>{{ this }}</th>
-																			{{/keys}}
-																		</tr>
-																	</thead>
-																	<tbody>
-																	{{#entries}}
-																		<tr>
-																			{{#this}}
-																			<td>{{ this }}</td>
-																			{{/this}}
-																		</tr>
-																	{{/entries}}
-																	</tbody>
-																{{/with}}
-															</table>
-														{{/ifEqual}}
-													{{/logs}}
-												</div>
-											{{/if}}
+											{{> logsPartial}}
 											<div class="error-info">
-												<!--<h3>{{i18n 'error'}}:</h3>-->
-												<pre class="bg-danger text-danger">{{error}}</pre>
-
-												<!--<h3>{{i18n 'screenshot'}}:</h3>-->
+												<pre class="bg-danger text-danger">
+													{{error}}
+												</pre>
 												<ul class="list-unstyled screenshots">
 													{{#screenshots}}
 														<li>
@@ -228,45 +133,22 @@
 				</div>
 			{{/each}}
 		</div>
-
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	<script src="../assets/js/jquery-1.9.1.js"></script>
 	<script src="../assets/js/tab.js"></script>
 
 	<script type="text/javascript">
 		$(function () {
-
 			$("#browsers-list a").click(function(e) {
 				e.preventDefault();
 				$(this).tab('show');
-			})
-
-
+			});
 			$(".dd").click(function () {
 				var display = 'none' == $(this).next(".dd-content").css('display') ? 'block' : 'none';
 				$(this).toggleClass("open").next(".dd-content").css('display', display);
 			});
-
-
 		});
-
-
 	</script>
 </body>
 </html>

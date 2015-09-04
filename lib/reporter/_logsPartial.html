@@ -1,0 +1,47 @@
+{{#if logs}}
+	<div class="step-logs dd-content bg-info text-info">
+		<!--<h3>{{i18n 'output'}}:</h3>-->
+		{{#logs}}
+			{{#ifEqual type 'text'}}
+				<div class="log log-text log-level-{{ level }}">{{ text }}</div>
+			{{/ifEqual}}
+
+			{{#ifEqual type 'assertion'}}
+				<div class="log log-assert log-assert-{{ status }}">{{ text }}</div>
+			{{/ifEqual}}
+
+			{{#ifEqual type 'value'}}
+				<dl class="log log-value">
+					<dt>{{ key }}:</dt>
+					<dd>{{ value }}</dd>
+				</dl>
+			{{/ifEqual}}
+
+			{{#ifEqual type 'table'}}
+				<table class="log log-table table table-striped table-condensed table-bordered table-hover">
+					{{#if text}}
+					<caption>{{ text }}:</caption>
+					{{/if}}
+					{{#with data}}
+					<thead>
+					<tr>
+						{{#keys}}
+						<th>{{ this }}</th>
+						{{/keys}}
+					</tr>
+					</thead>
+					<tbody>
+					{{#entries}}
+					<tr>
+						{{#this}}
+						<td>{{ this }}</td>
+						{{/this}}
+					</tr>
+					{{/entries}}
+					</tbody>
+					{{/with}}
+				</table>
+			{{/ifEqual}}
+		{{/logs}}
+	</div>
+{{/if}}

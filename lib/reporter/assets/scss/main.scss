@@ -20,6 +20,8 @@ h1.page-title {
 .navbar {
 	background-color: $navBar1;
 	background-image: linear-gradient(to bottom, $navBar0, $navBar1, $navBar2);
+	box-shadow: 0 0 50px white, 0 0 50px white;
+	border: 0;
 }
 
 .navbar-brand {
