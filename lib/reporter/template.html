@@ -1,230 +1,228 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Test report</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="shortcut icon" type="image/ico" href="images/favicon.ico"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="../assets/images/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
-    <link rel="stylesheet" href="../assets/main.min.css">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Test report</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" type="image/ico" href="images/favicon.ico"/>
+	<link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../assets/images/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+	<link rel="stylesheet" href="../assets/main.min.css">
 </head>
 <body>
 
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-	        {{#with stats}}
-            <a class="navbar-brand" href="#">
-	            <span class="text">
-		            {{#if failures}}I'm feeling very depressed.{{else}}Call that job satisfaction, 'cause I don't.{{/if}}
-	            </span>
-            </a>
-            <ul class="stats {{#if failures}}has-failures{{/if}}">
-                <li class="passes"><span class="text">{{i18n 'passed'}}:</span> <span class="value">{{passes}}</span></li>
-                <li class="failures"><span class="text">{{i18n 'failed'}}:</span> <span class="value">{{failures}}</span></li>
-                <li><span class="text">{{i18n 'skipped'}}:</span> <span class="value">{{skipped}}</span></li>
-                <li><span class="text">{{i18n 'duration'}}:</span> <span class="value">{{duration}}s</span></li>
-                <li><span class="text">{{i18n 'threads'}}:</span> <span class="value">{{threads}}</span></li>
-            </ul>
-            {{/with}}
-        </div>
-    </nav>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			{{#with stats}}
+			<a class="navbar-brand" href="#">
+				<span class="text">
+					{{#if failures}}I'm feeling very depressed.{{else}}Call that job satisfaction, 'cause I don't.{{/if}}
+				</span>
+			</a>
+			<ul class="stats {{#if failures}}has-failures{{/if}}">
+				<li class="passes"><span class="text">{{i18n 'passed'}}:</span> <span class="value">{{passes}}</span></li>
+				<li class="failures"><span class="text">{{i18n 'failed'}}:</span> <span class="value">{{failures}}</span></li>
+				<li><span class="text">{{i18n 'skipped'}}:</span> <span class="value">{{skipped}}</span></li>
+				<li><span class="text">{{i18n 'duration'}}:</span> <span class="value">{{duration}}s</span></li>
+				<li><span class="text">{{i18n 'threads'}}:</span> <span class="value">{{threads}}</span></li>
+			</ul>
+			{{/with}}
+		</div>
+	</nav>
 
-    <div class="container">
+	<div class="container">
 
-        <h1 class="page-title">{{i18n 'title'}}</h1>
+		<h1 class="page-title">{{i18n 'title'}}</h1>
 
-        <ul id="browsers-list" class="nav nav-tabs nav-justified">
-            {{#each browsers}}
-                <li role="presentation" class="browser-tab {{#if @first}}active{{/if}}">
-                    <a class="browser" href="#{{anchor platform browserName version}}">
-                        <span class="icon sprt-{{ browserName }}"></span>
-                        <span class="info">
-                            <span class="name">{{ browserName }}{{#if version}} {{ version }}{{/if}}</span>
-                            {{#if platform}}<span class="platform">{{ platform }}</span>{{/if}}
-                        </span>
-                    </a>
-                </li>
-            {{/each}}
-        </ul>
+		<ul id="browsers-list" class="nav nav-tabs nav-justified">
+			{{#each browsers}}
+				<li role="presentation" class="browser-tab {{#if @first}}active{{/if}}">
+					<a class="browser" href="#{{anchor platform browserName version}}">
+						<span class="icon sprt-{{ browserName }}"></span>
+						<span class="info">
+							<span class="name">{{ browserName }}{{#if version}} {{ version }}{{/if}}</span>
+							{{#if platform}}<span class="platform">{{ platform }}</span>{{/if}}
+						</span>
+					</a>
+				</li>
+			{{/each}}
+		</ul>
 
+		<div class="tab-content">
+			{{#each browsers}}
+				<div role="tabpanel" class="tab-pane fade in {{#if @first}}active{{/if}}" id="{{anchor platform browserName version}}" aria-labelledby="#{{anchor platform browserName version}}">
+				{{#features}}
+					<section class="feature">
+						<h3><span>{{i18n 'Feature'}}:</span> {{title}}</h3>
+						<ul class="info">
+							{{#each description}}
+							<li>{{ this }}</li>
+							{{/each}}
+						</ul>
 
-        <div class="tab-content">
-            {{#each browsers}}
-            <div role="tabpanel" class="tab-pane fade in {{#if @first}}active{{/if}}" id="{{anchor platform browserName version}}" aria-labelledby="#{{anchor platform browserName version}}">
+						{{#scenarios}}
+							<div class="scenario">
+								<div class="scenario-header dd">
+									{{#ifEqual status 'pass'}}
+										<span class="label label-success">{{i18n 'success'}}</span>
+									{{/ifEqual}}
+									{{#ifEqual status 'pending'}}
+										<span class="label label-primary">{{i18n 'pending'}}</span>
+									{{/ifEqual}}
+									{{#ifEqual status 'fail'}}
+										<span class="label label-danger">{{i18n 'failed'}}</span>
+									{{/ifEqual}}
+									<span class="scenario-text">{{i18n 'Scenario'}}: {{title}}</span>
+								</div>
+								<div class="scenario-content dd-content">
+								{{#steps}}
+									<div class="step">
+										{{#ifEqual status 'pass'}}
+											<div class="single-step-result {{#if logs}}dd{{/if}}">
+												<span class="label label-success">{{i18n 'success'}}</span>
+												<span class="scenario-text">{{title}}</span>
+											</div>
+											{{#if logs}}
+												<div class="step-logs dd-content">
+													<!--<h3>{{i18n 'output'}}:</h3>-->
+													{{#logs}}
+														{{#ifEqual type 'text'}}
+															<div class="log log-text log-level-{{ level }}">{{ text }}</div>
+														{{/ifEqual}}
 
-                {{#features}}
+														{{#ifEqual type 'assertion'}}
+															<div class="log log-assert log-assert-{{ status }}">{{ text }}</div>
+														{{/ifEqual}}
 
-                <section class="feature">
-                    <h3><span>{{i18n 'Feature'}}:</span> {{title}}</h3>
-                    <ul class="info">
-                        {{#each description}}
-                        <li>{{ this }}</li>
-                        {{/each}}
-                    </ul>
+														{{#ifEqual type 'value'}}
+														<dl class="log log-value">
+															<dt>{{ key }}:</dt>
+															<dd>{{ value }}</dd>
+														</dl>
+														{{/ifEqual}}
 
-                    {{#scenarios}}
-                    <div class="scenario">
-                        <div class="scenario-header dd">
-                            {{#ifEqual status 'pass'}}
-                            <span class="label label-success">{{i18n 'success'}}</span>
-                            {{/ifEqual}}
-                            {{#ifEqual status 'pending'}}
-                            <span class="label label-primary">{{i18n 'pending'}}</span>
-                            {{/ifEqual}}
-                            {{#ifEqual status 'fail'}}
-                            <span class="label label-danger">{{i18n 'failed'}}</span>
-                            {{/ifEqual}}
-                            <span class="scenario-text">{{i18n 'Scenario'}}: {{title}}</span>
-                        </div>
+														{{#ifEqual type 'table'}}
+															<table class="log log-table table table-striped table-condensed table-bordered table-hover">
+																{{#if text}}
+																	<caption>{{ text }}:</caption>
+																{{/if}}
+																{{#with data}}
+																<thead>
+																<tr>
+																	{{#keys}}
+																	<th>{{ this }}</th>
+																	{{/keys}}
+																</tr>
+																</thead>
+																<tbody>
+																{{#entries}}
+																<tr>
+																	{{#this}}
+																	<td>{{ this }}</td>
+																	{{/this}}
+																</tr>
+																{{/entries}}
+																</tbody>
+																{{/with}}
+															</table>
+														{{/ifEqual}}
+													{{/logs}}
+												</div>
+											{{/if}}
+										{{/ifEqual}}
 
-                        <div class="scenario-content dd-content">
-                        {{#steps}}
+										{{#ifEqual status 'pending'}}
+										<div class="single-step-result">
+											<span class="label label-primary">{{i18n 'pending'}}</span>
+											<span class="scenario-text">{{title}}</span>
+										</div>
+										{{/ifEqual}}
 
-                        {{#ifEqual status 'pass'}}
-                        <div class="single-step-result">
-	                        <span class="label label-success">{{i18n 'success'}}</span>
-	                        <span class="scenario-text">{{title}}</span>
-                        </div>
-                        {{#if logs}}
-                        <div class="step-logs">
-                            <!--<h3>{{i18n 'output'}}:</h3>-->
-                            {{#logs}}
-                            {{#ifEqual type 'text'}}
-                            <div class="log log-text log-level-{{ level }}">{{ text }}</div>
-                            {{/ifEqual}}
+										{{#ifEqual status 'fail'}}
+										<div class="single-step-result {{#if logs}}dd{{/if}}">
+											<span class="label label-danger">{{i18n 'failed'}}</span>
+											<span class="scenario-text">{{title}}</span>
+										</div>
+										{{#if logs}}
+											<div class="step-logs dd-content">
+												<!--<h3>{{i18n 'output'}}:</h3>-->
+												{{#logs}}
+													{{#ifEqual type 'text'}}
+														<div class="log log-text log-level-{{ level }}">{{ text }}</div>
+													{{/ifEqual}}
 
-                            {{#ifEqual type 'assertion'}}
-                            <div class="log log-assert log-assert-{{ status }}">{{ text }}</div>
-                            {{/ifEqual}}
+													{{#ifEqual type 'assertion'}}
+														<div class="log log-assert log-assert-{{ status }}">{{ text }}</div>
+													{{/ifEqual}}
 
-                            {{#ifEqual type 'value'}}
-                            <dl class="log log-value">
-                                <dt>{{ key }}:</dt>
-                                <dd>{{ value }}</dd>
-                            </dl>
-                            {{/ifEqual}}
+													{{#ifEqual type 'value'}}
+														<div class="log log-value">
+															<dl>
+																<dt>{{ key }}:</dt>
+																<dd>{{ value }}</dd>
+															</dl>
+														</div>
+													{{/ifEqual}}
 
-                            {{#ifEqual type 'table'}}
-                            <table class="log log-table table table-striped table-condensed table-bordered table-hover">
-                                {{#if text}}<caption>{{ text }}:</caption>{{/if}}
-                                {{#with data}}
-                                <thead>
-                                <tr>
-                                    {{#keys}}
-                                    <th>{{ this }}</th>
-                                    {{/keys}}
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {{#entries}}
-                                <tr>
-                                    {{#this}}
-                                    <td>{{ this }}</td>
-                                    {{/this}}
-                                </tr>
-                                {{/entries}}
-                                </tbody>
-                                {{/with}}
-                            </table>
-	                        {{/ifEqual}}
-                        {{/logs}}
-                        {{/if}}
-                        {{/ifEqual}}
+													{{#ifEqual type 'table'}}
+														<table class="log log-table table table-striped table-condensed table-bordered table-hover">
+															{{#if text}}
+																<caption>{{ text }}:</caption>
+															{{/if}}
+															{{#with data}}
+																<thead>
+																	<tr>
+																		{{#keys}}
+																			<th>{{ this }}</th>
+																		{{/keys}}
+																	</tr>
+																</thead>
+																<tbody>
+																{{#entries}}
+																	<tr>
+																		{{#this}}
+																		<td>{{ this }}</td>
+																		{{/this}}
+																	</tr>
+																{{/entries}}
+																</tbody>
+															{{/with}}
+														</table>
+													{{/ifEqual}}
+												{{/logs}}
+											</div>
+										{{/if}}
+										<div class="error-info">
+											<!--<h3>{{i18n 'error'}}:</h3>-->
+											<pre class="error">{{error}}</pre>
 
-                        {{#ifEqual status 'pending'}}
-                        <div class="single-step-result">
-                            <span class="label label-primary">{{i18n 'pending'}}</span>
-	                        <span class="scenario-text">{{title}}</span>
-                        </div>
-                        {{/ifEqual}}
+											<!--<h3>{{i18n 'screenshot'}}:</h3>-->
+											<div class="screenshot">
+												<img src="../{{ screenshot }}">
+											</div>
+										</div>
+										{{/ifEqual}}
 
-                        {{#ifEqual status 'fail'}}
-                        <div class="single-step-result">
-                            <span class="label label-danger">{{i18n 'failed'}}</span>
-	                        <span class="scenario-text">{{title}}</span>
-                        </div>
-                        {{#if logs}}
-                        <div class="step-logs">
-                            <h3>{{i18n 'output'}}:</h3>
-                            {{#logs}}
-                            {{#ifEqual type 'text'}}
-                            <div class="log log-text log-level-{{ level }}">{{ text }}</div>
-                            {{/ifEqual}}
+										{{#ifEqual status 'skipped'}}
+											<div class="single-step-result">
+												<span class="label label-warning">{{i18n 'skipped'}}</span>
+												<span class="scenario-text">{{title}}</span>
+											</div>
+										{{/ifEqual}}
+										</div>
+								{{/steps}}
+								</div>
+							</div>
+						{{/scenarios}}
+					</section>
+				{{/features}}
+				</div>
+			{{/each}}
+		</div>
 
-                            {{#ifEqual type 'assertion'}}
-                            <div class="log log-assert log-assert-{{ status }}">{{ text }}</div>
-                            {{/ifEqual}}
-
-                            {{#ifEqual type 'value'}}
-                            <div class="log log-value">
-                                <dl>
-                                    <dt>{{ key }}:</dt>
-                                    <dd>{{ value }}</dd>
-                                </dl>
-                            </div>
-                            {{/ifEqual}}
-
-                            {{#ifEqual type 'table'}}
-                            <table class="log log-table table table-striped table-condensed table-bordered table-hover">
-	                            {{#if text}}<caption>{{ text }}:</caption>{{/if}}
-	                            {{#with data}}
-                                <thead>
-                                <tr>
-                                    {{#keys}}
-                                    <th>{{ this }}</th>
-                                    {{/keys}}
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {{#entries}}
-                                <tr>
-                                    {{#this}}
-                                    <td>{{ this }}</td>
-                                    {{/this}}
-                                </tr>
-                                {{/entries}}
-                                </tbody>
-                                {{/with}}
-                            </table>
-                            {{/ifEqual}}
-                            {{/logs}}
-                        </div>
-                        {{/if}}
-                        <div class="error-info">
-                            <h3>{{i18n 'error'}}:</h3>
-                            <code class="error">{{error}}</code>
-
-                            <h3>{{i18n 'screenshot'}}:</h3>
-                            <img src="../{{ screenshot }}">
-                        </div>
-                        {{/ifEqual}}
-
-                        {{#ifEqual status 'skipped'}}
-                        <div class="single-step-result">
-                            <span class="label label-warning">{{i18n 'skipped'}}</span>
-	                        <span class="scenario-text">{{title}}</span>
-                        </div>
-                        {{/ifEqual}}
-
-                        {{/steps}}
-                        </div>
-                    </div>
-                    {{/scenarios}}
-                </section>
-
-                {{/features}}
-
-            </div>
-            {{/each}}
-        </div>
-
-    </div>
-
-
-
+	</div>
 
 
 
@@ -238,27 +236,30 @@
 
 
 
-    <script src="../assets/js/jquery-1.9.1.js"></script>
-    <script src="../assets/js/tab.js"></script>
-
-    <script type="text/javascript">
-        $(function () {
-
-            $("#browsers-list a").click(function(e) {
-                e.preventDefault();
-                $(this).tab('show');
-            })
 
 
-            $(".dd").click(function () {
-                var display = 'none' == $(this).next(".dd-content").css('display') ? 'block' : 'none';
-                $(this).next(".scenario-content").css('display', display);
-            });
+
+	<script src="../assets/js/jquery-1.9.1.js"></script>
+	<script src="../assets/js/tab.js"></script>
+
+	<script type="text/javascript">
+		$(function () {
+
+			$("#browsers-list a").click(function(e) {
+				e.preventDefault();
+				$(this).tab('show');
+			})
 
 
-        });
+			$(".dd").click(function () {
+				var display = 'none' == $(this).next(".dd-content").css('display') ? 'block' : 'none';
+				$(this).next(".dd-content").css('display', display);
+			});
 
 
-    </script>
+		});
+
+
+	</script>
 </body>
 </html>
