@@ -8,11 +8,9 @@ $font-size-base: 16px !default;
 $navBar0: #DEE1E6;
 $navBar1: #DCDFE4;
 $navBar2: #CED1D6;
-$secondary: #3498DB;
 $success: #2ECC71;
-$failure: #E74C3C;
-$background: #ECF0F1;
 $borderColor: #DDD;
+$dottedBorderColor: darken($borderColor, 10%);
 $hoverBgColor: #EEE;
 
 h1.page-title {
@@ -58,7 +56,7 @@ h1.page-title {
 		padding: .3em;
 		border-radius: 5px;
 		background-color: rgb(202, 208, 218);
-		color: black;
+		//color: black;
 	}
 
 	&.has-failures {
@@ -116,6 +114,27 @@ h1.page-title {
 	}
 }
 
+.arrow-down {
+	position: relative;
+	top: 5px; right: 5px;
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid black;
+	transition: transform .3s;
+	.dd.open & {
+		transform: rotate(180deg);
+	}
+}
+
+.dd-content {
+	border-left: 1px dotted $dottedBorderColor;
+	margin: 5px 0;
+	padding: 0 15px;
+	display: none;
+}
+
 .scenario {
 	.label {
 		min-width: 6em;
@@ -125,30 +144,34 @@ h1.page-title {
 	}
 }
 
-.scenario-header {
+%featureOrStepRow {
 	line-height: 16px;
-	padding: 2px 0;
+	padding: 4px 0;
+}
+
+.scenario-header {
+	@extend %featureOrStepRow;
 	font-weight: bold;
 }
 
-.scenario-content {
-	display: none;
-	border-left: 1px dotted darken($borderColor, 20%);
-	margin: 5px 0;
-	padding: 6px 15px;
+.single-step-result {
+	@extend %featureOrStepRow;
 }
 
 .step-logs {
 	display: none;
+	padding: 15px;
 }
 
 .log-table {
+	font-size: inherit;
 	caption {
 		font-weight: bold;
 		color: inherit;
 	}
-	min-width: 50%;
-	font-size: inherit;
+	thead, tbody {
+		background-color: white;
+	}
 }
 
 .log-value {
@@ -159,6 +182,15 @@ h1.page-title {
 	}
 }
 
-pre.error {
-	color: #C30600;
+.screenshots {
+	img {
+		border: 1px solid $borderColor;
+		border-radius: 6px;
+	}
+}
+
+.error-info {
+	pre {
+		margin: 1em 0;
+	}
 }
