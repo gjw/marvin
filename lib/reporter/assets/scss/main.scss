@@ -22,22 +22,27 @@ h1.page-title {
 .navbar {
 	background-color: $navBar1;
 	background-image: linear-gradient(to bottom, $navBar0, $navBar1, $navBar2);
-
-	//border: 0;
-
 }
 
 .navbar-brand {
-	//line-height: 97px;
 	float: left;
 	padding: 50px 0 0 160px;
 	height: 97px;
-	color: #333;
 	background-image: url("images/marvin-logo-1x.jpg");
 	background-repeat: no-repeat;
 	@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
 		background-image: url("images/marvin-logo-2x.jpg");
 		background-size: 150px 97px;
+	}
+	.text {
+		display: none;
+		@media (min-width: 990px) {
+			display: inline;
+			font-size: 16px;
+		}
+		@media (min-width: 1200px) {
+			font-size: 20px;
+		}
 	}
 }
 
@@ -131,4 +136,25 @@ h1.page-title {
 	border-left: 1px dotted darken($borderColor, 20%);
 	margin: 5px 0;
 	padding: 6px 15px;
+}
+
+.log-table {
+	caption {
+		font-weight: bold;
+		color: inherit;
+	}
+	min-width: 50%;
+	font-size: inherit;
+}
+
+.log-value {
+	dt {
+		float: left;
+		clear: left;
+		margin-right: .33em;
+	}
+}
+
+pre.error {
+	color: #C30600;
 }
