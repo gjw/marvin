@@ -86,7 +86,7 @@
 												<span class="label label-success">{{i18n 'success'}}</span>
 												<span class="scenario-text">{{title}}</span>
 											</div>
-											{{> logsPartial}}
+											{{> _logs}}
 										{{/ifEqual}}
 
 										{{#ifEqual status 'pending'}}
@@ -102,7 +102,7 @@
 												<span class="label label-danger">{{i18n 'failed'}}</span>
 												<span class="scenario-text">{{title}}</span>
 											</div>
-											{{> logsPartial}}
+											{{> _logs}}
 											<div class="error-info">
 												<pre class="bg-danger text-danger">
 													{{error}}
