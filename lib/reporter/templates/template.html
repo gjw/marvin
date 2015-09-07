@@ -87,6 +87,7 @@
 												<span class="scenario-text">{{title}}</span>
 											</div>
 											{{> _logs}}
+											{{> _screenshots}}
 										{{/ifEqual}}
 
 										{{#ifEqual status 'pending'}}
@@ -104,16 +105,8 @@
 											</div>
 											{{> _logs}}
 											<div class="error-info">
-												<pre class="bg-danger text-danger">
-													{{error}}
-												</pre>
-												<ul class="list-unstyled screenshots">
-													{{#screenshots}}
-														<li>
-															<img class="img-responsive" src="./screenshots/{{ this }}">
-														</li>
-													{{/screenshots}}
-												</ul>
+												<pre class="bg-danger text-danger">{{error}}</pre>
+												{{> _screenshots}}
 											</div>
 										{{/ifEqual}}
 
