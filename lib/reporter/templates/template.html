@@ -78,46 +78,62 @@
 									<span class="scenario-text">{{i18n 'scenario'}}: {{title}}</span>
 								</div>
 								<div class="scenario-content dd-content">
-								{{#steps}}
-									<div class="step">
-										{{#ifEqual status 'pass'}}
-											<div class="single-step-result {{#if logs}}dd{{/if}}">
-												{{#if logs}}<div class="arrow-down pull-right"></div>{{/if}}
-												<span class="label label-success">{{i18n 'success'}}</span>
-												<span class="scenario-text">{{title}}</span>
-											</div>
-											{{> _logs}}
-											{{> _screenshots}}
-										{{/ifEqual}}
+									{{#steps}}
+										<div class="step">
+											{{#ifEqual status 'pass'}}
+												<div class="single-step-result {{#ifCond logs.length '||' screenshots.length}}dd{{/ifCond}}">
+													{{#ifCond logs.length '||' screenshots.length}}<div class="arrow-down pull-right"></div>{{/ifCond}}
+													<span class="label label-success">{{i18n 'success'}}</span>
+													<span class="scenario-text">{{title}}</span>
+												</div>
+												{{#ifCond logs.length '||' screenshots.length}}
+													<div class="step-logs dd-content bg-info text-info">
+														{{> _logs}}
+														{{> _screenshots}}
+													</div>
+												{{/ifCond}}
+											{{/ifEqual}}
 
-										{{#ifEqual status 'pending'}}
-											<div class="single-step-result">
-												<span class="label label-primary">{{i18n 'pending'}}</span>
-												<span class="scenario-text">{{title}}</span>
-											</div>
-										{{/ifEqual}}
+											{{#ifEqual status 'pending'}}
+												<div class="single-step-result">
+													<span class="label label-primary">{{i18n 'pending'}}</span>
+													<span class="scenario-text">{{title}}</span>
+												</div>
+											{{/ifEqual}}
 
-										{{#ifEqual status 'fail'}}
-											<div class="single-step-result {{#if logs}}dd{{/if}}">
-												{{#if logs}}<div class="arrow-down pull-right"></div>{{/if}}
-												<span class="label label-danger">{{i18n 'failed'}}</span>
-												<span class="scenario-text">{{title}}</span>
-											</div>
-											{{> _logs}}
-											<div class="error-info">
-												<pre class="bg-danger text-danger">{{error}}</pre>
-												{{> _screenshots}}
-											</div>
-										{{/ifEqual}}
+											{{#ifEqual status 'fail'}}
+												<div class="single-step-result {{#if logs}}dd{{/if}}">
+													{{#if logs}}<div class="arrow-down pull-right"></div>{{/if}}
+													<span class="label label-danger">{{i18n 'failed'}}</span>
+													<span class="scenario-text">{{title}}</span>
+												</div>
 
-										{{#ifEqual status 'skipped'}}
-											<div class="single-step-result">
-												<span class="label label-warning">{{i18n 'skipped'}}</span>
-												<span class="scenario-text">{{title}}</span>
-											</div>
-										{{/ifEqual}}
+												{{#if logs}}
+													<div class="step-logs dd-content bg-info text-info">
+														{{> _logs}}
+													</div>
+												{{/if}}
+
+												<div class="error-info">
+													<pre class="bg-danger text-danger">{{error}}</pre>
+													<ul class="list-unstyled screenshots">
+														{{#screenshots}}
+														<li>
+															<img class="img-responsive" src="./screenshots/{{ this }}">
+														</li>
+														{{/screenshots}}
+													</ul>
+												</div>
+											{{/ifEqual}}
+
+											{{#ifEqual status 'skipped'}}
+												<div class="single-step-result">
+													<span class="label label-warning">{{i18n 'skipped'}}</span>
+													<span class="scenario-text">{{title}}</span>
+												</div>
+											{{/ifEqual}}
 										</div>
-								{{/steps}}
+									{{/steps}}
 								</div>
 							</div>
 						{{/scenarios}}
