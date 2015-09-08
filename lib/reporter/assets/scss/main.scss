@@ -114,22 +114,24 @@ body {
 	cursor: pointer;
 	border-radius: 2px;
 	transition: background-color $transitionsDuration;
+	.arrow {
+		width: 0;
+		height: 0;
+		border-top: 5px solid transparent;
+		border-bottom: 5px solid transparent;
+		border-left: 5px solid black;
+		transition: transform $transitionsDuration;
+		position: absolute;
+		left: 4px;
+		top: 6px;
+	}
 	&:hover {
 		background-color: $hoverBgColor;
+		.arrow {
+			transform: rotate(15deg);
+		}
 	}
-}
-
-.arrow {
-	width: 0;
-	height: 0;
-	border-top: 5px solid transparent;
-	border-bottom: 5px solid transparent;
-	border-left: 5px solid black;
-	transition: transform $transitionsDuration;
-	.dd:hover & {
-		transform: rotate(15deg);
-	}
-	.dd.open & {
+	&.open .arrow {
 		transform: rotate(90deg);
 	}
 }
@@ -150,39 +152,31 @@ body {
 	}
 }
 
-%featureOrStepRow {
-	line-height: 16px;
-	padding: 4px 0;
-}
-
 .scenario-header {
-	@extend %featureOrStepRow;
 	font-weight: bold;
 }
 
-.single-step-result {
-	@extend %featureOrStepRow;
+.step-results {
+	overflow: hidden;
 	svg {
+		position: relative;
 		width: 16px;
 		height: 16px;
 		margin-right: 8px;
 		fill: rgba(0,0,0,0.3);
-		transition: fill $transitionsDuration;
+		transition: top $transitionsDuration ease-in-out;
+		top: 0;
 	}
 	&.open svg {
-		fill: rgba(0,0,0,0);
+		top: 30px;
 	}
 }
 
 .scenario-header,
-.single-step-result {
-	padding-left: 20px;
+.step-results {
+	line-height: 16px;
+	padding: 4px 0 4px 20px;
 	position: relative;
-	.arrow {
-		position: absolute;
-		left: 4px;
-		top: 6px;
-	}
 }
 
 .step-logs {
