@@ -65,7 +65,7 @@
 						{{#scenarios}}
 							<div class="scenario">
 								<div class="scenario-header dd">
-									<div class="arrow-down pull-right"></div>
+									<div class="arrow pull-left"></div>
 									{{#ifEqual status 'pass'}}
 										<span class="label label-success">{{i18n 'success'}}</span>
 									{{/ifEqual}}
@@ -82,7 +82,7 @@
 										<div class="step">
 											{{#ifEqual status 'pass'}}
 												<div class="single-step-result {{#ifCond logs.length '||' screenshots.length}}dd{{/ifCond}}">
-													{{#ifCond logs.length '||' screenshots.length}}<div class="arrow-down pull-right"></div>{{/ifCond}}
+													{{#ifCond logs.length '||' screenshots.length}}<div class="arrow pull-left"></div>{{/ifCond}}
 													{{#if logs}}<div class="logs-icon pull-right">{{> _logsSvg}}</div>{{/if}}
 													{{#if screenshots}}<div class="screenshots-icon pull-right">{{> _screenshotsSvg}}</div>{{/if}}
 													<span class="label label-success">{{i18n 'success'}}</span>
@@ -106,7 +106,7 @@
 											{{#ifEqual status 'fail'}}
 												<div class="single-step-result {{#if logs}}dd{{/if}}">
 													{{#if logs}}
-														<div class="arrow-down pull-right"></div>
+														<div class="arrow pull-left"></div>
 														<div class="logs-icon pull-right">{{> _logsSvg}}</div>
 													{{/if}}
 													<span class="label label-danger">{{i18n 'failed'}}</span>
