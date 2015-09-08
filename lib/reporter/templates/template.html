@@ -16,18 +16,18 @@
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container">
 			{{#with stats}}
-			<div class="navbar-brand">
-				<span class="text">
-					{{#if failures}}I'm feeling very depressed.{{else}}Call that job satisfaction, 'cause I don't.{{/if}}
-				</span>
-			</div>
-			<ul class="stats {{#if failures}}has-failures{{/if}}">
-				<li class="passes"><span class="text">{{i18n 'passed'}}:</span> <span class="value">{{passes}}</span></li>
-				<li class="failures"><span class="text">{{i18n 'failed'}}:</span> <span class="value">{{failures}}</span></li>
-				<li><span class="text">{{i18n 'skipped'}}:</span> <span class="value">{{skipped}}</span></li>
-				<li><span class="text">{{i18n 'duration'}}:</span> <span class="value">{{duration}}s</span></li>
-				<li><span class="text">{{i18n 'threads'}}:</span> <span class="value">{{threads}}</span></li>
-			</ul>
+				<div class="navbar-brand">
+					<span class="text">
+						{{#if failures}}I'm feeling very depressed.{{else}}Call that job satisfaction, 'cause I don't.{{/if}}
+					</span>
+				</div>
+				<ul class="stats {{#if failures}}has-failures{{/if}}">
+					<li class="passes"><span class="text">{{i18n 'passed'}}:</span> <span class="value">{{passes}}</span></li>
+					<li class="failures"><span class="text">{{i18n 'failed'}}:</span> <span class="value">{{failures}}</span></li>
+					<li><span class="text">{{i18n 'skipped'}}:</span> <span class="value">{{skipped}}</span></li>
+					<li><span class="text">{{i18n 'duration'}}:</span> <span class="value">{{duration}}s</span></li>
+					<li><span class="text">{{i18n 'threads'}}:</span> <span class="value">{{threads}}</span></li>
+				</ul>
 			{{/with}}
 		</div>
 	</nav>
@@ -58,7 +58,7 @@
 						<h3><span>{{i18n 'feature'}}:</span> {{title}}</h3>
 						<ul class="info">
 							{{#each description}}
-							<li>{{ this }}</li>
+								<li>{{ this }}</li>
 							{{/each}}
 						</ul>
 
@@ -83,6 +83,8 @@
 											{{#ifEqual status 'pass'}}
 												<div class="single-step-result {{#ifCond logs.length '||' screenshots.length}}dd{{/ifCond}}">
 													{{#ifCond logs.length '||' screenshots.length}}<div class="arrow-down pull-right"></div>{{/ifCond}}
+													{{#if logs}}<div class="logs-icon pull-right">{{> _logsSvg}}</div>{{/if}}
+													{{#if screenshots}}<div class="screenshots-icon pull-right">{{> _screenshotsSvg}}</div>{{/if}}
 													<span class="label label-success">{{i18n 'success'}}</span>
 													<span class="scenario-text">{{title}}</span>
 												</div>
@@ -103,7 +105,10 @@
 
 											{{#ifEqual status 'fail'}}
 												<div class="single-step-result {{#if logs}}dd{{/if}}">
-													{{#if logs}}<div class="arrow-down pull-right"></div>{{/if}}
+													{{#if logs}}
+														<div class="arrow-down pull-right"></div>
+														<div class="logs-icon pull-right">{{> _logsSvg}}</div>
+													{{/if}}
 													<span class="label label-danger">{{i18n 'failed'}}</span>
 													<span class="scenario-text">{{title}}</span>
 												</div>

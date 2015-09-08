@@ -12,6 +12,7 @@ $success: #2ECC71;
 $borderColor: #DDD;
 $dottedBorderColor: darken($borderColor, 10%);
 $hoverBgColor: #EEE;
+$transitionsDuration: .3s;
 
 h1.page-title {
 	margin: 130px 0 20px;
@@ -111,20 +112,23 @@ h1.page-title {
 
 .dd {
 	cursor: pointer;
+	border-radius: 2px;
+	transition: background-color $transitionsDuration;
 	&:hover {
 		background-color: $hoverBgColor;
 	}
 }
 
 .arrow-down {
-	position: relative;
-	top: 5px; right: 5px;
 	width: 0;
 	height: 0;
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
 	border-top: 5px solid black;
-	transition: transform .3s;
+	transition: transform $transitionsDuration;
+	.dd:hover & {
+		transform: rotate(30deg);
+	}
 	.dd.open & {
 		transform: rotate(180deg);
 	}
@@ -158,6 +162,23 @@ h1.page-title {
 
 .single-step-result {
 	@extend %featureOrStepRow;
+	svg {
+		width: 16px;
+		height: 16px;
+		margin-right: 8px;
+		fill: rgba(0,0,0,0.3);
+		transition: fill $transitionsDuration;
+	}
+	&.open svg {
+		fill: rgba(0,0,0,0);
+	}
+}
+
+.scenario-header,
+.single-step-result {
+	.arrow-down {
+		margin: 5px 4px 0 0;
+	}
 }
 
 .step-logs {
