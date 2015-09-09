@@ -333,7 +333,7 @@ The html report includes details of any errors and embedded browser screenshots.
 
 ![Success tests screenshot](presentation/img/reports/success-collapsed.png)
 
-![Failed tests screenshot](presentation/img/reports/failed-collapsed.png)
+![Failed tests screenshot](presentation/img/reports/failures-collapsed.png)
 
 If you are using marvin-js in a non English language (set in the config) the report will try to find matching translations from [this file](https://github.com/brunoscopelliti/marvin/blob/master/lib/reporter/i18n/translations.json), defaulting to English if any are missing. Please feel free to contribute any translations that you may require.
 
