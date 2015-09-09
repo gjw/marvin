@@ -89,7 +89,7 @@
 													<span class="scenario-text">{{title}}</span>
 												</div>
 												{{#ifCond logs.length '||' screenshots.length}}
-													<div class="step-logs dd-content bg-info text-info">
+													<div class="step-logs dd-content">
 														{{> _logs}}
 														{{> _screenshots}}
 													</div>
@@ -114,7 +114,7 @@
 												</div>
 
 												{{#if logs}}
-													<div class="step-logs dd-content bg-info text-info">
+													<div class="step-logs dd-content">
 														{{> _logs}}
 													</div>
 												{{/if}}
@@ -162,7 +162,7 @@
 				$dd = $(this)
 					.toggleClass('open')
 					.next(".dd-content")
-					.slideToggle(333);
+					.slideToggle(300);
 			});
 		});
 	</script>

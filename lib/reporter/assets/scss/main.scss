@@ -10,13 +10,17 @@ $navBar1: #DCDFE4;
 $navBar2: #CED1D6;
 $success: #2ECC71;
 $borderColor: #DDD;
-$dottedBorderColor: darken($borderColor, 10%);
+$collapsibleBorderColor: #EDEDED;
 $hoverBgColor: #EEE;
 $transitionsDuration: .3s;
+$indentationSize: 20px;
 
 body {
 	margin: 110px 0;
 }
+
+
+/* HEADER */
 
 .navbar {
 	background-color: $navBar1;
@@ -48,8 +52,6 @@ body {
 }
 
 .stats {
-	//margin-top: 55px;
-	//margin: 0;
 	padding-top: 50px;
 	display: flex;
 	list-style: none;
@@ -59,7 +61,6 @@ body {
 		padding: .3em;
 		border-radius: 5px;
 		background-color: rgb(202, 208, 218);
-		//color: black;
 	}
 
 	&.has-failures {
@@ -89,6 +90,9 @@ body {
 	}
 }
 
+
+/* TABS */
+
 #browsers-list {
 	.browser-tab {
 		.icon {
@@ -110,6 +114,9 @@ body {
 	padding: 5px 15px;
 }
 
+
+/* COLLAPSIBLE CONTENT */
+
 .dd {
 	cursor: pointer;
 	border-radius: 2px;
@@ -127,9 +134,6 @@ body {
 	}
 	&:hover {
 		background-color: $hoverBgColor;
-		.arrow {
-			transform: rotate(15deg);
-		}
 	}
 	&.open .arrow {
 		transform: rotate(90deg);
@@ -137,11 +141,13 @@ body {
 }
 
 .dd-content {
-	border-left: 1px dotted $dottedBorderColor;
-	margin: 5px 0 5px 20px;
-	padding-left: 8px;
+	border-left: 1px solid $collapsibleBorderColor;
+	margin: 5px 0 5px $indentationSize;
 	display: none;
 }
+
+
+/* SCENARIOS */
 
 .scenario {
 	.label {
@@ -155,6 +161,13 @@ body {
 .scenario-header {
 	font-weight: bold;
 }
+
+.scenario-content {
+	padding-left: 8px;
+}
+
+
+/* STEPS */
 
 .step-results {
 	overflow: hidden;
@@ -175,13 +188,46 @@ body {
 .scenario-header,
 .step-results {
 	line-height: 16px;
-	padding: 4px 0 4px 20px;
+	padding: 4px 0 4px $indentationSize;
 	position: relative;
 }
 
+
+/* LOGS */
+
 .step-logs {
-	display: none;
-	padding: 15px;
+	padding-left: 15px;
+	font-family: monospace;
+	font-size: 12px;
+}
+
+%text-log {
+	padding: 10px;
+}
+
+.log-level-info {
+	@extend .bg-info;
+	@extend .text-info;
+	@extend %text-log;
+}
+
+.log-level-warning {
+	@extend .bg-warning;
+	@extend .text-warning;
+	@extend %text-log;
+}
+
+.log-assert-ko,
+.log-level-error {
+	@extend .bg-danger;
+	@extend .text-danger;
+	@extend %text-log;
+}
+
+.log-assert-ok {
+	@extend .bg-success;
+	@extend .text-success;
+	@extend %text-log;
 }
 
 .log-table {
@@ -203,14 +249,18 @@ body {
 	}
 }
 
+
+/* SCREENSHOTS */
+
 .screenshots {
-	img {
-		border: 1px solid $borderColor;
-		border-radius: 6px;
-	}
+	img {}
 }
 
+
+/* ERRORS */
+
 .error-info {
+	margin-left: $indentationSize;
 	pre {
 		margin: 1em 0;
 	}
