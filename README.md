@@ -331,9 +331,24 @@ As the tests are run using Mocha, you can use any of Mocha's [reporters](http://
 To use it set the reporter in your config to `marvin`. This reporter includes a Mocha spec-like console output and a html report saved to your results directory.
 The html report includes details of any errors and embedded browser screenshots.
 
-![Success tests screenshot](presentation/img/reports/success-collapsed.png)
+![Successful tests report](presentation/img/reports/success-collapsed.png)
+Successful tests report
 
-![Failed tests screenshot](presentation/img/reports/failures-collapsed.png)
+![Successful tests with steps expanded](presentation/img/reports/success-expanded.png)
+Successful tests with steps expanded
+
+![Successful tests with steps and log values as table](presentation/img/reports/success-expanded-steps-logs-table.png)
+Successful tests with steps and log values as table
+
+![Successful tests with steps and log values as text](presentation/img/reports/success-expanded-steps-logs-text.png)
+Successful tests with steps and log values as text
+
+![Failed tests screen](presentation/img/reports/failures-collapsed.png)
+Failed tests report
+
+![Failed tests screen with steps expanded](presentation/img/reports/failures-expanded.png)
+Failed tests with steps expanded
+
 
 If you are using marvin-js in a non English language (set in the config) the report will try to find matching translations from [this file](https://github.com/brunoscopelliti/marvin/blob/master/lib/reporter/i18n/translations.json), defaulting to English if any are missing. Please feel free to contribute any translations that you may require.
 
