@@ -18,7 +18,11 @@
 			{{#with stats}}
 				<div class="navbar-brand">
 					<span class="text">
-						{{#if failures}}I'm feeling very depressed.{{else}}Call that job satisfaction, 'cause I don't.{{/if}}
+						{{#if failures}}
+							{{i18n 'marvin_failed'}}
+						{{else}}
+							{{i18n 'marvin_successful'}}
+						{{/if}}
 					</span>
 				</div>
 				<ul class="stats">
