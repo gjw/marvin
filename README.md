@@ -1,8 +1,10 @@
 # marvin-js
 
-[![NPM](https://nodei.co/npm/marvin-js.png?downloads=true&downloadRank=true)](https://nodei.co/npm/marvin-js/)
+![marvin-js](/presentation/img/marvin-js-header-2x.jpg)
 
 An easy to use lightweight web testing framework for Node, designed for speed, maintainability and collaboration, now multi-browser. Bringing together everything you need out of the box - familiar BDD features/scenarios, a simple page object library, parallel testing and pretty rich reports, integrating [Yadda 0.15.2](https://github.com/acuminous/yadda), [Selenium-Webdriver 2.46.1](https://code.google.com/p/selenium/wiki/WebDriverJs), [Mocha 2.2.5](http://mochajs.org/) & [Chai 3.2.0](http://chaijs.com/).
+
+[![NPM](https://nodei.co/npm/marvin-js.png?downloads=true&downloadRank=true)](https://nodei.co/npm/marvin-js/)
 
 #### Credits
 
@@ -17,9 +19,9 @@ marvin-js was born as a clone of LateRooms' [Moonraker](https://github.com/LateR
 * [X] POC logging from test steps in the report
 * [X] POC not-blocking assertions
 * [X] Support for simultaneous test run on multiple browsers and multiple selenium hubs
+* [X] make possible to include screenshot into the report
 * [ ] refactoring feature-parser.js: it should not be in /utils
-* [ ] make possible to include screenshot into the report
-* [ ] improve demo repository with more scenarios [marvin-demo](https://github.com/brunoscopelliti/marvin-demo)
+* [ ] improve [demo repository](https://github.com/brunoscopelliti/marvin-demo) with more scenarios
 * [ ] integrating selenium-webdriver [until's module](https://github.com/SeleniumHQ/selenium/blob/master/javascript/node/selenium-webdriver/CHANGES.md#v2440)
 
 ## Index
