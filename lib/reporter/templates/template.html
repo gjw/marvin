@@ -11,7 +11,7 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
 	<link rel="stylesheet" href="../assets/main.min.css">
 </head>
-<body>
+<body class="{{#if stats.failures}}has-failures{{/if}}">
 
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container">
@@ -21,7 +21,7 @@
 						{{#if failures}}I'm feeling very depressed.{{else}}Call that job satisfaction, 'cause I don't.{{/if}}
 					</span>
 				</div>
-				<ul class="stats {{#if failures}}has-failures{{/if}}">
+				<ul class="stats">
 					<li class="passes"><span class="text">{{i18n 'passed'}}:</span> <span class="value">{{passes}}</span></li>
 					<li class="failures"><span class="text">{{i18n 'failed'}}:</span> <span class="value">{{failures}}</span></li>
 					<li><span class="text">{{i18n 'skipped'}}:</span> <span class="value">{{skipped}}</span></li>
