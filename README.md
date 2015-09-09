@@ -10,20 +10,6 @@ An easy to use lightweight web testing framework for Node, designed for speed, m
 
 marvin-js was born as a clone of LateRooms' [Moonraker](https://github.com/LateRoomsGroup/moonraker).
 
-## Done / planned development since we cloned Moonraker
-
-* [X] **updated all dependencies**; simplified report's dependencies management; removed coffeescript (not a big fan, sorry)
-* [X] refactoring directory tree
-* [X] support Yadda's custom dictionary
-* [X] store reports in different folders, so that a new test does not clear result's history; it is possible to enable the cleaning of the result folder via configuration, with `"clean": true`
-* [X] POC logging from test steps in the report
-* [X] POC not-blocking assertions
-* [X] Support for simultaneous test run on multiple browsers and multiple selenium hubs
-* [X] make possible to include screenshot into the report
-* [ ] refactoring feature-parser.js: it should not be in /utils
-* [ ] improve [demo repository](https://github.com/brunoscopelliti/marvin-demo) with more scenarios
-* [ ] integrating selenium-webdriver [until's module](https://github.com/SeleniumHQ/selenium/blob/master/javascript/node/selenium-webdriver/CHANGES.md#v2440)
-
 ## Index
 
 * [Install](#install)
@@ -338,15 +324,20 @@ At best, you will only be as quick as your longest running feature though, so if
 
 ### Reporting
 
-As the tests are run using Mocha, you can use any of Mocha's [reporters](http://mochajs.org/#reporters).
-Just set the required reporter in the config.
-As Mocha is designed to run serially though you will experience issues when running marvin-js in parallel, so marvin-js comes with its own custom reporter for Mocha.
+As the tests are run using Mocha, you can use any of Mocha's [reporters](http://mochajs.org/#reporters). Just set the required reporter in the config. As Mocha is designed to run serially though you will experience issues when running marvin-js in parallel, so marvin-js comes with its own custom reporter for Mocha.
+
+#### marvin-js reporter
 
 To use it set the reporter in your config to `marvin`. This reporter includes a Mocha spec-like console output and a html report saved to your results directory.
-
 The html report includes details of any errors and embedded browser screenshots.
 
+![Success tests screenshot](presentation/img/reports/success-collapsed.png)
+
+![Failed tests screenshot](presentation/img/reports/failed-collapsed.png)
+
 If you are using marvin-js in a non English language (set in the config) the report will try to find matching translations from [this file](https://github.com/brunoscopelliti/marvin/blob/master/lib/reporter/i18n/translations.json), defaulting to English if any are missing. Please feel free to contribute any translations that you may require.
+
+#### marvin-js reporter's
 
 ### Page object reference
 
@@ -429,3 +420,17 @@ session.currentUrl().then(function() {
 });
 ```
 * `savePerfLog(filename)` - Saves the driver performance logs to `/yourResultsDir/perf_logs/filename`. This has been tested with Chrome to import logs into a local instance of [webpagetest](http://www.webpagetest.org/) to generate performance waterfall charts etc.
+
+## Done / planned development since we cloned Moonraker
+
+* [X] **updated all dependencies**; simplified report's dependencies management; removed coffeescript (not a big fan, sorry)
+* [X] refactoring directory tree
+* [X] support Yadda's custom dictionary
+* [X] store reports in different folders, so that a new test does not clear result's history; it is possible to enable the cleaning of the result folder via configuration, with `"clean": true`
+* [X] POC logging from test steps in the report
+* [X] POC not-blocking assertions
+* [X] Support for simultaneous test run on multiple browsers and multiple selenium hubs
+* [X] make possible to include screenshot into the report
+* [ ] refactoring feature-parser.js: it should not be in /utils
+* [ ] improve [demo repository](https://github.com/brunoscopelliti/marvin-demo) with more scenarios
+* [ ] integrating selenium-webdriver [until's module](https://github.com/SeleniumHQ/selenium/blob/master/javascript/node/selenium-webdriver/CHANGES.md#v2440)
