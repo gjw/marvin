@@ -446,5 +446,5 @@ session.currentUrl().then(function() {
 * [X] Support for simultaneous test run on multiple browsers and multiple selenium hubs
 * [X] make possible to include screenshot into the report
 * [ ] refactoring feature-parser.js: it should not be in /utils
-* [ ] improve [demo repository](https://github.com/brunoscopelliti/marvin-demo) with more scenarios
+* [ ] improve [demo repository](https://github.com/brunoscopelliti/marvin-demo) with more scenarios, like smartphone version scenarios and/or responsive design scenarios.
 * [ ] integrating selenium-webdriver [until's module](https://github.com/SeleniumHQ/selenium/blob/master/javascript/node/selenium-webdriver/CHANGES.md#v2440)
