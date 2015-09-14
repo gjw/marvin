@@ -44,7 +44,7 @@
 			{{#each browsers}}
 				<li role="presentation" class="browser-tab {{#if @first}}active{{/if}}">
 					<a class="browser" href="#{{anchor platform browserName version}}">
-						<span class="icon sprt-{{ browserName }}"></span>
+						<span class="icon sprt-{{sprite browserName}}"></span>
 						<span class="info">
 							<span class="name">{{ browserName }}{{#if version}} {{ version }}{{/if}}</span>
 							{{#if platform}}<span class="platform">{{ platform }}</span>{{/if}}
