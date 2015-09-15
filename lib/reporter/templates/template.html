@@ -46,8 +46,8 @@
 					<a class="browser" href="#{{@key}}">
 						<span class="icon sprt-{{sprite browserName}}"></span>
 						<span class="info">
-							<span class="name">{{ browserName }}{{#if version}} {{ version }}{{/if}}</span>
-							{{#if platform}}<span class="platform">{{ platform }}</span>{{/if}}
+							<span class="name">{{ browserName }}{{#ifCond version '||' browser_version}} {{ version }}{{ browser_version }}{{/ifCond}}</span>
+							{{#ifCond platform '||' os}}<span class="platform">{{ platform }}{{ os }} {{ os_version }}</span>{{/ifCond}}
 						</span>
 					</a>
 				</li>
