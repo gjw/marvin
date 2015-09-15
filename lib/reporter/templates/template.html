@@ -43,7 +43,7 @@
 		<ul id="browsers-list" class="nav nav-tabs nav-justified">
 			{{#each browsers}}
 				<li role="presentation" class="browser-tab {{#if @first}}active{{/if}}">
-					<a class="browser" href="#{{anchor platform browserName version}}">
+					<a class="browser" href="#{{@key}}">
 						<span class="icon sprt-{{sprite browserName}}"></span>
 						<span class="info">
 							<span class="name">{{ browserName }}{{#if version}} {{ version }}{{/if}}</span>
@@ -56,7 +56,7 @@
 
 		<div class="tab-content">
 			{{#each browsers}}
-				<div role="tabpanel" class="tab-pane fade in {{#if @first}}active{{/if}}" id="{{anchor platform browserName version}}" aria-labelledby="#{{anchor platform browserName version}}">
+				<div role="tabpanel" class="tab-pane fade in {{#if @first}}active{{/if}}" id="{{@key}}" aria-labelledby="#{{@key}}">
 				{{#features}}
 					<section class="feature">
 						<h3><span>{{i18n 'feature'}}:</span> {{title}}</h3>
