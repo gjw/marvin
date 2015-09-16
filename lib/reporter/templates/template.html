@@ -40,14 +40,14 @@
 
 		<h1 class="page-title">{{i18n 'title'}}</h1>
 
-		<ul id="browsers-list" class="nav nav-tabs nav-justified">
+		<ul id="browsers-list">
 			{{#each browsers}}
 				<li role="presentation" class="browser-tab {{#if @first}}active{{/if}}">
 					<a class="browser" href="#{{@key}}">
 						<span class="icon sprt-{{sprite browserName}}"></span>
 						<span class="info">
-							<span class="name">{{ browserName }}{{#ifCond version '||' browser_version}} {{ version }}{{ browser_version }}{{/ifCond}}</span>
-							{{#ifCond platform '||' os}}<span class="platform">{{ platform }}{{ os }} {{ os_version }}</span>{{/ifCond}}
+							<span class="name">{{browserName}}{{#ifCond version '||' browser_version}} {{version}}{{browser_version}}{{/ifCond}}</span>
+							{{#ifCond platform '||' os}}<span class="platform">{{platform}}{{os}} {{os_version}}</span>{{/ifCond}}
 						</span>
 					</a>
 				</li>
