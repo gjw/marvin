@@ -57,14 +57,19 @@
 		<div class="tab-content">
 			{{#each browsers}}
 				<div role="tabpanel" class="tab-pane fade in {{#if @first}}active{{/if}}" id="{{@key}}" aria-labelledby="#{{@key}}">
+				{{#if insights}}
+					<section class="insights">
+						{{> _insights}}
+					</section>
+				{{/if}}
 				{{#features}}
 					<section class="feature">
 						<h3><span>{{i18n 'feature'}}:</span> {{title}}</h3>
-						<ul class="info">
+						<div class="feature-description">
 							{{#each description}}
-								<li>{{ this }}</li>
+								<p>{{ this }}</p>
 							{{/each}}
-						</ul>
+						</div>
 
 						{{#scenarios}}
 							<div class="scenario">
