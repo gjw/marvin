@@ -58,7 +58,7 @@
 			{{#each browsers}}
 				<div role="tabpanel" class="tab-pane fade in {{#if @first}}active{{/if}}" id="{{@key}}" aria-labelledby="#{{@key}}">
 				{{#if insights}}
-					<section class="insights">
+					<section id="insights">
 						{{> _insights}}
 					</section>
 				{{/if}}

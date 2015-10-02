@@ -1,5 +1,6 @@
 <h3>{{i18n 'insights'}}</h3>
-
-{{#each insights}}
-  <p><span class="stepname">{{@key}}</span> <b>{{this.fail}}</b>  (failed {{this.failurePercentage}}%)</p>
-{{/each}}
+<div class="report bg-danger text-danger">
+  {{#each insights}}
+    <p><span class="stepname">{{@key}}</span> <b>{{this.fail}}</b>  ({{i18n 'insight' this.failurePercentage}})</p>
+  {{/each}}
+</div>

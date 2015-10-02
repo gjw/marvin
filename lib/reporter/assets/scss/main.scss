@@ -302,9 +302,21 @@ body {
 
 /* ERRORS */
 
+#insights {
+	.report {
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    word-break: break-all;
+    word-wrap: break-word;
+    border-radius: 4px;
+	}
+}
+
 .error-info {
 	margin-left: $indentationSize;
 	pre {
+		border: 0;
 		margin: 1em 0;
 	}
 }
