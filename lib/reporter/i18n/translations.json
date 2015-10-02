@@ -14,7 +14,9 @@
         "skipped": "Skipped",
         "error": "Error",
         "screenshot": "Screenshot",
-        "output": "Output log"
+        "output": "Output log", 
+        "insights": "Failure insights",
+        "insight": "Failed the ${0}% of the times"
     },
     "italian": {
         "marvin_failed": "Mi sento molto depresso.",
@@ -31,7 +33,9 @@
         "skipped": "Saltato",
         "error": "Errore",
         "screenshot": "Istantanea",
-        "output": "Output log"
+        "output": "Output log",
+        "insigths": "Dettagli sugli errori",
+        "insigth": "E' fallita nel ${failure}% delle volte"
     },
     "french": {
         "marvin_failed": "I'm feeling very depressed.",
