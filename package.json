@@ -1,19 +1,19 @@
 {
   "name": "marvin-js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/brunoscopelliti/marvin",
   "description": "A web testing framework for Node (initial idea from LateRooms' Moonraker)",
   "keywords": ["testing", "framework", "automation", "selenium", "gherkin", "reports"],
   "main": "lib/marvin.js",
   "dependencies": {
     "chalk": "1.1.1",
-    "yadda": "0.15.4",
-    "selenium-webdriver": "2.47.0",
+    "yadda": "0.16.0",
+    "selenium-webdriver": "2.48.2",
     "mocha": "2.3.3",
-    "chai": "3.3.0",
-    "nconf": "0.7.2",
+    "chai": "3.4.1",
+    "nconf": "0.8.2",
     "glob": "5.0.15",
-    "handlebars": "4.0.3",
+    "handlebars": "4.0.4",
     "wrench": "1.5.8"
   },
   "devDependencies": {
