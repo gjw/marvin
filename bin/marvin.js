@@ -36,9 +36,9 @@ var wrench = require('wrench');
     wrench.rmdirSyncRecursive(config.resultsDir);
   }
 
-  var now = new Date();
-  session.launchDate = now.toUTCString().slice(5, -4).toLowerCase().replace(/[:\s]/g, "-");
-  
+  let now = new Date();
+  session.launchDate = now.toISOString().substr(0, 19).replace('T', '_').replace(/:/g, '-');
+
   wrench.mkdirSyncRecursive(path.join(config.resultsDir, session.launchDate, 'screenshots'));
 
 }());
@@ -53,7 +53,7 @@ var parser = require('../lib/utils/feature-parser');
   var threads = config.threads || 1;
   var features = parser.parseFeatures(config.featuresDir, config.tags, config.language);
 
-  session.queues = []; 
+  session.queues = [];
 
   var i = 0;
   while(i < features.length) {
@@ -94,9 +94,3 @@ process.on('exit', function() {
     process.exit(2);
   }
 });
-
-
-
-
-
-
