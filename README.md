@@ -23,6 +23,7 @@ marvin-js was born as a clone of LateRooms' [Moonraker](https://github.com/LateR
 * [Assertions](#assertions)
 * [Saucelabs / Browserstack integration](#saucelabs--browserstack-integration)
 * [Running your tests in parallel](#running-your-tests-in-parallel)
+* [Managing state](#managing-state)
 * [Reporting](#reporting)
 * [Page object reference](#page-object-reference)
 * [Session reference](#session-reference)
@@ -321,6 +322,10 @@ When you use more the one `threads`, marvin-js will split your feature files ove
 Parallel testing works as expected for remote driver connections just as it does locally. If you have powerful enough hardware to run your tests on and a large, high performing selenium grid instance to open connections to, you can dramatically reduce your test execution time.
 
 At best, you will only be as quick as your longest running feature though, so if you have features with tons of scenarios in them you should think about breaking them down into smaller more manageable feature files.
+
+### Managing state
+
+To share state between separate step libraries you can use Yadda\'s [contexts](https://acuminous.gitbooks.io/yadda-user-guide/content/en/usage/managing-state.html).
 
 ### Reporting
 
