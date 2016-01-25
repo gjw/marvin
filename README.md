@@ -381,7 +381,7 @@ module.exports = new Page({
 });
 ```
 
-* Setting a url value is for when you call `visit()` on your page object. e.g: `examplePage.visit();`. These url's are relative to the baseUrl set in your config, but if you set a full url like `http://www.example.com` the baseUrl will be ignored. Additionally, `visit()` can take an optional query object: `examplePage.visit({ foo: 'bar', baz: 'qux' });` will visit `http://yourBaseUrl/search?foo=bar&baz=qux`.
+* Setting a url value is for when you call `visit()` on your page object. e.g: `examplePage.visit();`. These url's are relative to the baseUrl set in your config, but if you set a full url like `http://www.example.com` the baseUrl will be ignored. Additionally, `visit()` can take an optional query object with two possible properties: pathValues that contains an array with URL placeholder replacements, and querystring that contains a query string like `?param1=value1&param2=value2`, e.g. `examplePage.visit({querystring: '?param1=value1&param2=value2' });` will visit `http://yourBaseUrl?param1=value1&param2=value2`.
 
 * `element(selector, type)` - is used to find a specific element by selector type and returns a selenium webelement. The type is optional and if not supplied the default of 'css' is used (as in the examples above). You can specify another locator type if required - `this.element('//a/b/c', 'xpath')`. Elements are then accessed from your page objects: `examplePage.aTxtInput.click();`. All of [Selenium's locator](https://code.google.com/p/selenium/source/browse/javascript/webdriver/locators.js#212) types are supported.
 
@@ -425,20 +425,33 @@ session.resizeWindow(320, 480);
 ```
 
 * `execute(fn)` - Adds any function to webdriver's control flow. Please see [control flows](https://code.google.com/p/selenium/wiki/WebDriverJs#Control_Flows).
-* `defer()` - Returns a webdriver.promise.defer() object. Please see [deferred objects](https://code.google.com/p/selenium/wiki/WebDriverJs#Deferred_Objects).
 * `resizeWindow(x, y)` - Resizes the browser window. By default its maximized.
 * `refresh()` - Refreshes the current page.
 * `saveScreenshot(filename)` - Saves a screenshot to `/yourResultsDir/timestamp/screenshots/filename`. This is called automatically on test failure.
 * `deleteAllCookies()` - Deletes all cookies.
 * `addCookie(name, value, optDomain, optPath, optIsSecure, optExpiry)` - Adds a cookie.
 * `getCookie(name)` - Gets a cookie by name.
-* `currentUrl(handler)` - Gets the current url as a parsed [url](http://nodejs.org/api/url.html) object. e.g:
+* `getWebdriver()` - Returns a reference to Webdriver that can be used, for instance, to create a new promise, e.g.
 ```javascript
-session.currentUrl().then(function() {
-  console.log(url);
-});
+ var deferred = new session.getWebdriver().promise.Deferred();
 ```
-* `savePerfLog(filename)` - Saves the driver performance logs to `/yourResultsDir/perf_logs/filename`. This has been tested with Chrome to import logs into a local instance of [webpagetest](http://www.webpagetest.org/) to generate performance waterfall charts etc.
+* `getCurrentUrl()` - Returns an url object, e.g:
+```javascript
+Url {
+    protocol: 'https:',
+    slashes: true,
+    auth: null,
+    host: 'myhost.com',
+    port: null,
+    hostname: 'myhost.com',
+    hash: null,
+    search: null,
+    query: null,
+    pathname: '/mydir/mysubdir',
+    ath: '/mydir/mysubdir',
+    href: 'https://myhost.com/mydir/mysubdir' 
+}
+```
 
 ## Done / planned development since we cloned Moonraker
 
