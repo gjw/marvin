@@ -25,7 +25,7 @@ module.exports = new Page({
 
 Each page has a url, some elements and any convenient methods that you may require.
 
-Elements are found by css selector (or optionally another locator type can be specified) and return a selenium web-element which can be interacted with as [per usual](https://code.google.com/p/selenium/wiki/WebDriverJs). A full reference can be found [here](README.MD#page-object-reference).
+Elements are found by css selector (or optionally another locator type can be specified) and return a selenium web-element which can be interacted with as [per usual](https://code.google.com/p/selenium/wiki/WebDriverJs). A full reference can be found [here](/README.MD#page-object-reference).
 
 You can then use your page objects in your step definitions:
 
