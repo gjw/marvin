@@ -55,3 +55,17 @@ exports.define = function (steps) {
 };
 
 ```
+
+## Page load
+
+Sometime it is useful to execute a script at the page load, may it be a screenshot capture or a init function; you have two main methods to execute a custom script after the page is loaded: the Page object can expose a property called `onLoad` that is called every time that page is loaded, or if you need to execute a script only for certain steps, the `step.visit()` function returns a promise, that can be chained.
+
+```javascript
+module.exports = new Page({
+    onLoad: {
+        value: function() {
+          session.saveScreenshot('item');
+        }
+    }
+});
+```
