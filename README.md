@@ -2,7 +2,11 @@
 
 ![marvin-js](/presentation/img/marvin-js-header-2x.jpg)
 
-An easy to use lightweight web testing framework for Node, designed for speed, maintainability and collaboration, now multi-browser. Bringing together everything you need out of the box - familiar BDD features/scenarios, a simple page object library, parallel testing and pretty rich reports, integrating [Yadda 0.16.0](https://github.com/acuminous/yadda), [Selenium-Webdriver 2.48.2](https://code.google.com/p/selenium/wiki/WebDriverJs), [Mocha 2.3.3](http://mochajs.org/) & [Chai 3.4.1](http://chaijs.com/).
+#### NOTE
+This is not Marvin, this is a fork with modified functionality.  Nothing here is guaranteed to work the same.  Documentation may not be accurate (though we attempt to), and changes have not (yet, if ever) been pushed upstream.
+
+## Intro
+An easy to use lightweight web testing framework for Node, designed for speed, maintainability and collaboration, now multi-browser. Bringing together everything you need out of the box - familiar BDD features/scenarios, a simple page object library, parallel testing and pretty rich reports, integrating [Yadda 0.22.0](https://github.com/acuminous/yadda), [Selenium-Webdriver 3.00-beta](https://code.google.com/p/selenium/wiki/WebDriverJs), [Mocha 3.1.0](http://mochajs.org/) & [Chai 3.5.0](http://chaijs.com/).
 
 [![NPM](https://nodei.co/npm/marvin-js.png?downloads=true&downloadRank=true)](https://nodei.co/npm/marvin-js/)
 
@@ -19,7 +23,7 @@ marvin-js was born as a clone of LateRooms' [Moonraker](https://github.com/LateR
 * [Writing Your Tests](#writing-your-tests)
 * [Page Objects](docs/page-object.md)
 * [Components](#components)
-* [Feature Tags](#feature-tags)
+* [Tags](#tags)
 * [Assertions](#assertions)
 * [Saucelabs / Browserstack integration](#saucelabs--browserstack-integration)
 * [Running your tests in parallel](#running-your-tests-in-parallel)
@@ -42,7 +46,7 @@ The example tests use Chrome, so you will need the latest [chromedriver](http://
 
 ### Configure
 
-marvin-js is configured using a `config.json` file in your project root:
+marvin-js is configured using a `dev.config.json` file in your project root:
 
 ```json
 {
@@ -67,6 +71,7 @@ marvin-js is configured using a `config.json` file in your project root:
   }]
 }
 ```
+Setting the environment variable TEST_ENV will allow you to select which config file to use at runtime, defaulting to `dev`, e.g. `TEST_ENV=staging` will have marvin load `staging.config.json`.
 
 * `baseUrl`        - Your base url, page object urls will be relative to this.*
 * `featuresDir`    - The path to your features directory.*
@@ -197,9 +202,22 @@ exports.define = function (steps) {
 
 ```
 
-### Feature Tags
+### Tags
 
-marvin-js supports feature tags to help keep things organized and allow you to selectively run certain features:
+marvin-js supports feature tags to help keep things organized and allow you to selectively run certain features and/or scenarios.  Note that original marvin only respected annotations on features.
+
+Also supporting scenarios does make the picking logic more complex, but allows for more flexibility in annotations and run-time selection.
+
+The rules are:
+
+- If a feature is tagged with `@x`, and marvin is run with `!@x`, the entire feature will be skipped, period.
+- If a feature is tagged with `@x`, and marvin is run with `@x`, all contained scenarios will be run, excepting any that have other tags that have been specifically excluded for this run.
+- If a feature is not tagged with anything relevant to the current run:
+  - if the run was initiated with any tags specifically to include, only the scenarios in the feature that match those inclusions (and are also not excluded) will be run
+  - if the run was initiated without any specific inclusions, we assume the intent was to run everything, minus specific exclusions.
+
+In general, if we don't ask for a specific inclusion, we assume the starting point is all tests, and exclusions will always trump inclusions.
+
 
 ```
 @testing
@@ -336,7 +354,7 @@ Url {
     query: null,
     pathname: '/mydir/mysubdir',
     ath: '/mydir/mysubdir',
-    href: 'https://myhost.com/mydir/mysubdir' 
+    href: 'https://myhost.com/mydir/mysubdir'
 }
 ```
 
